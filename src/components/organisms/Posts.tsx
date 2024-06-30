@@ -2,7 +2,8 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "@/lib/api/ghost";
-import Post from "../molecules/PostCard";
+import Post from "../molecules/post-card";
+import { Audio, TailSpin } from "react-loader-spinner";
 
 const Posts = () => {
   const {
@@ -11,7 +12,21 @@ const Posts = () => {
     error,
   } = useQuery({ queryKey: ["posts"], queryFn: () => fetchPosts() });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <TailSpin
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    );
   if (error) return <p>Error: {error.message}</p>;
 
   return (

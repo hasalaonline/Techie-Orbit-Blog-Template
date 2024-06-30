@@ -1,13 +1,9 @@
-import Header from "@/components/organisms/Header";
-import Hero from "@/components/organisms/Hero";
-import Posts from "@/components/organisms/Posts";
+import Home from "./home/page";
 
-export default function Home() {
+export default function Page() {
   return (
     <>
-      <Header />
-      <Hero />
-      <Posts />
+      <Home />
     </>
   );
 }

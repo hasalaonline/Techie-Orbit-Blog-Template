@@ -32,10 +32,30 @@ export async function fetchFeaturedPost(limit: number = 1) {
 
 export async function fetchPost(postSlug: string) {
     try {
-        const response = await api.posts.read({slug: 'welcome'}, {formats: ['html', 'plaintext']});
+        const response = await api.posts.read({slug: postSlug}, {formats: ['html', 'plaintext']});
         return response;
     } catch (error) {
         console.error("Error fetching posts:", error);
         throw error;
     }
+}
+
+export async function fetchTags() {
+  try {
+      const response = await api.tags.browse();
+      return response;
+  } catch (error) {
+      console.error("Error fetching posts:", error);
+      throw error;
+  }
+}
+
+export async function searchPos() {
+  try {
+      const response = await api.tags.browse();
+      return response;
+  } catch (error) {
+      console.error("Error fetching posts:", error);
+      throw error;
+  }
 }
