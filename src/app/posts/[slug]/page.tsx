@@ -1,7 +1,7 @@
 "use client";
 import Header from "../../../components/organisms/Header";
-import Footer from "../../../components/organisms/footer";
-import PostPage from "../../../components/organisms/single-post";
+import Footer from "../../../components/organisms/Footer";
+import PostPage from "../../../components/organisms/SinglePost";
 import { fetchPost } from "../../../lib/api/ghost";
 import { Post } from "../../../lib/types/post";
 import { useQuery } from "@tanstack/react-query";

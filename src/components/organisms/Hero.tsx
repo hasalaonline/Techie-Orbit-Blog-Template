@@ -1,12 +1,7 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { fetchFeaturedPost } from "../../lib/api/ghost";
 import Link from "next/link";
 import { TailSpin } from "react-loader-spinner";
