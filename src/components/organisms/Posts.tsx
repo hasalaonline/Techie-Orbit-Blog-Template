@@ -27,6 +27,7 @@ const Posts = () => {
         />
       </div>
     );
+
   if (error) return <p>Error: {error.message}</p>;
 
   return (
@@ -37,6 +38,7 @@ const Posts = () => {
           <div className="grid gap-4 grid-cols-3">
             {posts?.map((post: any) => (
               <Post
+                key={post.slug}
                 featuredImage={post.feature_image}
                 title={post.title}
                 date={post.published_at}
