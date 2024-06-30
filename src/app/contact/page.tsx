@@ -1,6 +1,6 @@
 "use client";
-import Header from "@/components/organisms/header";
-import Footer from "@/components/organisms/footer";
+import Header from "../../components/organisms/header";
+import Footer from "../../components/organisms/footer";
 
 const Contact = ({ params }: { params: any }) => {
   const { slug } = params;
