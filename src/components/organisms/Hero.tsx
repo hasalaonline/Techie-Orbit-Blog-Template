@@ -6,8 +6,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { fetchFeaturedPost } from "@/lib/api/ghost";
+} from "../../components/ui/card";
+import { fetchFeaturedPost } from "../../lib/api/ghost";
 import Link from "next/link";
 import { TailSpin } from "react-loader-spinner";
 

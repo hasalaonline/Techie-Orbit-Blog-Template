@@ -1,4 +1,4 @@
-import { Post } from "@/lib/types/post";
+import { Post } from "../../lib/types/post";
 import React from "react";
 import DOMPurify from "dompurify";
 

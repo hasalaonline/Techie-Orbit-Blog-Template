@@ -1,9 +1,9 @@
 "use client";
-import Header from "@/components/organisms/header";
-import Footer from "@/components/organisms/footer";
-import PostPage from "@/components/organisms/single-post";
-import { fetchPost } from "@/lib/api/ghost";
-import { Post } from "@/lib/types/post";
+import Header from "../../../components/organisms/header";
+import Footer from "../../../components/organisms/footer";
+import PostPage from "../../../components/organisms/single-post";
+import { fetchPost } from "../../../lib/api/ghost";
+import { Post } from "../../../lib/types/post";
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
 

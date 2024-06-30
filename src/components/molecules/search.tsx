@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Input } from "../ui/input";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPosts } from "@/lib/api/ghost";
+import { fetchPosts } from "../../lib/api/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 import Link from "next/link";
 

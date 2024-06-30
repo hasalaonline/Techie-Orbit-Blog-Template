@@ -8,9 +8,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+} from "../../components/ui/navigation-menu";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTags } from "@/lib/api/ghost";
+import { fetchTags } from "../../lib/api/ghost";
 
 const NavBar = () => {
   const {data} = useQuery({queryKey: ["tags"], queryFn: () => fetchTags()});

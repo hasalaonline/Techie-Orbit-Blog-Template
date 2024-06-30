@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPosts } from "@/lib/api/ghost";
+import { fetchPosts } from "../../lib/api/ghost";
 import Post from "../molecules/post-card";
 import { TailSpin } from "react-loader-spinner";
 
