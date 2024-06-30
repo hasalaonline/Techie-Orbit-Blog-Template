@@ -1,4 +1,4 @@
-import Header from "../../components/organisms/header";
+import Header from "../../components/organisms/Header";
 import Footer from "../../components/organisms/footer";
 import Hero from "../../components/organisms/hero";
 import Posts from "../../components/organisms/posts";

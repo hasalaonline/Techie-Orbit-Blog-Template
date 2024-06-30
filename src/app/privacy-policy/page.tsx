@@ -1,5 +1,5 @@
 "use client";
-import Header from "../../components/organisms/header";
+import Header from "../../components/organisms/Header";
 import Footer from "../../components/organisms/footer";
 
 const PrivacyPolicy = ({ params }: { params: any }) => {
