@@ -3,7 +3,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "@/lib/api/ghost";
 import Post from "../molecules/post-card";
-import { Audio, TailSpin } from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 
 const Posts = () => {
   const {

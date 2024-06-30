@@ -3,7 +3,6 @@ import Header from "@/components/organisms/header";
 import Footer from "@/components/organisms/footer";
 
 const TermsAndConditons = ({ params }: { params: any }) => {
-  const { slug } = params;
 
   return (
     <>

@@ -1,7 +1,6 @@
-import { HomeIcon, Mail, MailIcon, PhoneIcon } from "lucide-react";
+import { HomeIcon, MailIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaAddressBook } from "react-icons/fa";
 
 const footer = () => {
   return (

@@ -5,7 +5,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "@/lib/api/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 import Link from "next/link";
-import Image from "next/image";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
