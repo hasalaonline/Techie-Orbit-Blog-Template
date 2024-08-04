@@ -12,11 +12,13 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
 
   return (
     <>
-      <div className="w-full flex justify-center mt-20">
-        <div className="w-[1000px]">
-          <h1 className="text-4xl font-bold mb-10">{post.title}</h1>
+      <div className="w-full flex justify-center mt-4 sm:mt-20 px-4">
+        <div className="w-full max-w-[1000px]">
+          <h1 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-10">
+            {post.title}
+          </h1>
           {post.authors?.map((author, index) => (
-            <p key={index} className="text-sm mb-4">
+            <p key={index} className="text-sm mb-2 sm:mb-4">
               {author.name}
             </p>
           ))}
@@ -26,11 +28,12 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
             alt=""
             width={1000}
             height={500}
-            className="w-full rounded-2xl mb-8"
+            className="w-full rounded-2xl mb-6 sm:mb-8"
           />
-          <p className="flex flex-col space-y-4">
-            <div dangerouslySetInnerHTML={{ __html: sanitizedHtml ?? "" }} />
-          </p>
+          <div
+            className="prose prose-sm sm:prose lg:prose-lg"
+            dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+          />
         </div>
       </div>
     </>

@@ -60,9 +60,9 @@ const Header = () => {
               <X size={24} />
             </button>
           </div>
-          <div className="p-4">
-            <NavBar />
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Search />
+            <NavBar />
           </div>
         </div>
       </header>
