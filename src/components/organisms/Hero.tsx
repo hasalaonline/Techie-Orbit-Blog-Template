@@ -45,9 +45,9 @@ const Hero = () => {
             <Image
               src={post.feature_image}
               alt={post.title}
-              width={600}
-              height={400}
-              className="w-full max-w-lg rounded-3xl"
+              width={800}
+              height={600}
+              className="w-full max-w-4xl rounded-3xl"
             />
             <div className="absolute bottom-[-20px] sm:bottom-[-40px] sm:left-20 w-full px-4 sm:w-auto sm:px-0">
               <Card className="w-full sm:w-auto">
