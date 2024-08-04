@@ -1,11 +1,7 @@
 import React from "react";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "../atoms/card";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Props {
   featuredImage: string;
@@ -25,9 +21,11 @@ const Post = (props: Props) => {
       <Card>
         <Link href={`/posts/${props.slug}`}>
           <CardHeader>
-            <img
+            <Image
               src={props.featuredImage}
               alt=""
+              width={300}
+              height={200}
               className="w-full rounded-md mb-4"
             />
             <CardTitle>{props.title}</CardTitle>

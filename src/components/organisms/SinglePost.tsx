@@ -1,6 +1,7 @@
 import { Post } from "../../lib/types/post";
 import React from "react";
 import DOMPurify from "dompurify";
+import Image from "next/image";
 
 interface PostPageProps {
   post: Post;
@@ -20,9 +21,11 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
             </p>
           ))}
           <p className="text-sm mb-4">{post.date}</p>
-          <img
+          <Image
             src={post.featuredImage ?? ""}
             alt=""
+            width={1000}
+            height={500}
             className="w-full rounded-2xl mb-8"
           />
           <p className="flex flex-col space-y-4">

@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "../atoms/card";
 import { fetchFeaturedPost } from "../../lib/api/ghost";
 import Link from "next/link";
 import { TailSpin } from "react-loader-spinner";
+import Image from "next/image";
 
 const Hero = () => {
   const {
@@ -39,9 +40,11 @@ const Hero = () => {
         <ul>
           {posts?.map((post: any) => (
             <li key={post.id} className="relative flex justify-center">
-              <img
+              <Image
                 src={post.feature_image}
                 alt=""
+                width={300}
+                height={200}
                 className="w-2/4 rounded-3xl"
               />
               <div className="absolute bottom-[-40px] left-60 flex items-center justify-center">

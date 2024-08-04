@@ -8,25 +8,28 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "../../components/ui/navigation-menu";
+} from "../atoms/navigation-menu";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTags } from "../../lib/api/ghost";
 
 const NavBar = () => {
-  const {data} = useQuery({queryKey: ["tags"], queryFn: () => fetchTags()});
+  const { data } = useQuery({ queryKey: ["tags"], queryFn: () => fetchTags() });
   const tags: { title: string; href: string; description: string }[] = [
-    ...data?.map((tag: any) => ({
+    ...(data?.map((tag: any) => ({
       title: tag.name,
       href: `/tags/${tag.slug}`,
       description: tag.name,
-    })) ?? [],
+    })) ?? []),
   ];
   return (
     <>
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/">
+            <NavigationMenuLink
+              className={navigationMenuTriggerStyle()}
+              href="/"
+            >
               Home
             </NavigationMenuLink>
           </NavigationMenuItem>
@@ -49,13 +52,19 @@ const NavBar = () => {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()} href={'/contact'}>
+            <NavigationMenuLink
+              className={navigationMenuTriggerStyle()}
+              href={"/contact"}
+            >
               Contact
             </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()} href='/about'>
+            <NavigationMenuLink
+              className={navigationMenuTriggerStyle()}
+              href="/about"
+            >
               About Us
             </NavigationMenuLink>
           </NavigationMenuItem>

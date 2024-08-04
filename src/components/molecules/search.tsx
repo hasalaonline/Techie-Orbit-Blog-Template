@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Input } from "../ui/input";
+import { Input } from "../atoms/input";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "../../lib/api/ghost";
 import { PostOrPage } from "@tryghost/content-api";
 import Link from "next/link";
+import Image from "next/image";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,12 +46,12 @@ const Search = () => {
           <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md overflow-hidden z-10">
             {searchResults.map((post) => (
               <Link href={`/posts/${post.slug}`} key={post.id}>
-                <div
-                  className="px-4 py-2 border-b border-gray-200 flex gap-4"
-                >
-                  <img
+                <div className="px-4 py-2 border-b border-gray-200 flex gap-4">
+                  <Image
                     src={post.feature_image ?? ""}
                     alt=""
+                    width={40}
+                    height={40}
                     className="w-[40px] h-[40px] rounded-md"
                   />
                   <h3 className="font-medium">{post.title}</h3>
