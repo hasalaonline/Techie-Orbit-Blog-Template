@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -21,10 +20,11 @@ const NavBar = () => {
       description: tag.name,
     })) ?? []),
   ];
+
   return (
     <>
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="flex flex-col sm:flex-row items-center">
           <NavigationMenuItem>
             <NavigationMenuLink
               className={navigationMenuTriggerStyle()}
@@ -37,7 +37,7 @@ const NavBar = () => {
           <NavigationMenuItem>
             <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+              <ul className="grid w-full gap-3 p-4 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                 {tags.map((tag) => (
                   <NavigationMenuLink
                     key={tag.title}
@@ -54,7 +54,7 @@ const NavBar = () => {
           <NavigationMenuItem>
             <NavigationMenuLink
               className={navigationMenuTriggerStyle()}
-              href={"/contact"}
+              href="/contact"
             >
               Contact
             </NavigationMenuLink>

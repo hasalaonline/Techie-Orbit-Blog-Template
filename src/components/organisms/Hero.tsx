@@ -36,19 +36,22 @@ const Hero = () => {
 
   return (
     <>
-      <div className="mt-10">
-        <ul>
+      <div className="mt-10 flex flex-col items-center px-4">
+        <ul className="w-full max-w-4xl">
           {posts?.map((post: any) => (
-            <li key={post.id} className="relative flex justify-center">
+            <li
+              key={post.id}
+              className="relative flex flex-col items-center sm:items-start"
+            >
               <Image
                 src={post.feature_image}
-                alt=""
-                width={300}
-                height={200}
-                className="w-2/4 rounded-3xl"
+                alt={post.title}
+                width={600}
+                height={400}
+                className="w-full max-w-lg rounded-3xl"
               />
-              <div className="absolute bottom-[-40px] left-60 flex items-center justify-center">
-                <Card className="w-1/2">
+              <div className="absolute bottom-[-20px] sm:bottom-[-40px] sm:left-20 w-full px-4 sm:w-auto sm:px-0">
+                <Card className="w-full sm:w-auto">
                   <Link href={`/posts/${post.slug}`}>
                     <CardHeader>
                       <CardTitle>{post.title}</CardTitle>

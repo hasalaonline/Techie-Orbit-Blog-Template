@@ -32,10 +32,10 @@ const Posts = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center mt-40">
-        <div className="w-[1000px]">
-          <h2 className="font-bold text-xl mb-4">Latest Posts</h2>
-          <div className="grid gap-4 grid-cols-3">
+      <div className="w-full flex justify-center mt-20 sm:mt-40 px-4 sm:px-0">
+        <div className="w-full max-w-[1000px]">
+          <h2 className="font-bold text-xl mb-4 text-center sm:text-left">Latest Posts</h2>
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {posts?.map((post: any) => (
               <Post
                 key={post.slug}

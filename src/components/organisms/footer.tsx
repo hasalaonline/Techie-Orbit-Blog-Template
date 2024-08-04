@@ -2,20 +2,21 @@ import { HomeIcon, MailIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const footer = () => {
+const Footer = () => {
   return (
     <footer className="mt-20 items-center">
       <hr className="my-6 border-gray-300" />
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 w-[1200px]">
-        <div className="">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 lg:gap-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        <div className="text-center md:text-left">
           <Image
             src="/logo/logo.jpg"
             alt="Techie Orbit Logo"
             width={100}
             height={100}
+            className="mx-auto md:mx-0"
           />
-          <p className="text-left mt-4">
+          <p className="mt-4">
             Techie Orbit is a blog that provides quality content on technology
             and programming. We aim to provide the best content to our readers.
           </p>
@@ -24,7 +25,7 @@ const footer = () => {
         <div className="grid grid-cols-2 gap-8">
           <div>
             <h1 className="text-lg font-semibold">Quick Links</h1>
-            <ul className="mt-4 space-y-4">
+            <ul className="mt-4 space-y-4 text-center md:text-left">
               <li>
                 <Link href="/">Home</Link>
               </li>
@@ -39,7 +40,7 @@ const footer = () => {
 
           <div>
             <h1 className="text-lg font-semibold">Legal</h1>
-            <ul className="mt-4 space-y-4">
+            <ul className="mt-4 space-y-4 text-center md:text-left">
               <li>
                 <Link href="/privacy-policy"> Privacy Policy</Link>
               </li>
@@ -50,17 +51,17 @@ const footer = () => {
           </div>
         </div>
 
-        <div className="md:col-span-1">
+        <div className="md:col-span-1 text-center md:text-left">
           <h1 className="text-lg font-semibold">Contact Us</h1>
           <ul className="mt-4 space-y-4">
-            <li className="flex gap-2">
-              <PhoneIcon /> : 123456789
+            <li className="flex justify-center md:justify-start gap-2">
+              <PhoneIcon /> <span>123456789</span>
             </li>
-            <li className="flex gap-2">
-              <MailIcon /> : hello@hasalaabhilasha.me
+            <li className="flex justify-center md:justify-start gap-2">
+              <MailIcon /> <span>hello@hasalaabhilasha.me</span>
             </li>
-            <li className="flex gap-2">
-              <HomeIcon /> : 123456789
+            <li className="flex justify-center md:justify-start gap-2">
+              <HomeIcon /> <span>123 Main Street</span>
             </li>
           </ul>
         </div>
@@ -75,4 +76,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;
