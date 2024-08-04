@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardDescription, CardHeader, CardTitle } from "../atoms/Card";
+import { Card, CardDescription, CardHeader, CardTitle } from "../atoms/card";
 import Link from "next/link";
 import Image from "next/image";
 

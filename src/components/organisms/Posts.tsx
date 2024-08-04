@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "../../lib/api/ghost";
-import Post from "../molecules/Post-Card";
+import Post from "../molecules/post-card";
 import { TailSpin } from "react-loader-spinner";
 
 const Posts = () => {
