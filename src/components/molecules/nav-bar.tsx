@@ -7,7 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "../atoms/Navigation-Menu";
+} from "../atoms/navigation-menu";
 import { useQuery } from "@tanstack/react-query";
 import { fetchTags } from "../../lib/api/ghost";
 

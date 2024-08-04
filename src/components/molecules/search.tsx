@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Input } from "../atoms/Input";
+import { Input } from "../atoms/input";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "../../lib/api/ghost";
 import { PostOrPage } from "@tryghost/content-api";
