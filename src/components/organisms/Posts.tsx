@@ -7,7 +7,7 @@ import { TailSpin } from "react-loader-spinner";
 
 const Posts = () => {
   const [page, setPage] = useState(1);
-  const [limit] = useState(10);
+  const [limit] = useState(9);
   const {
     data: posts,
     isLoading,
