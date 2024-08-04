@@ -14,8 +14,7 @@ const Header = () => {
   };
 
   return (
-    <>
-      <header className="w-full max-w-[1200px] flex justify-between items-center px-4 mx-auto">
+    <header className="w-full max-w-[1200px] flex justify-between items-center px-4 mx-auto">
         <Link href="/" className="flex justify-center sm:justify-start">
           <Image
             src="/logo/logo.jpg"
@@ -66,7 +65,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-    </>
   );
 };
 

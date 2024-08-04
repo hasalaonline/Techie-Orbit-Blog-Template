@@ -22,8 +22,7 @@ const NavBar = () => {
   ];
 
   return (
-    <>
-      <NavigationMenu>
+    <NavigationMenu>
         <NavigationMenuList className="flex flex-col sm:flex-row items-center">
           <NavigationMenuItem>
             <NavigationMenuLink
@@ -70,7 +69,6 @@ const NavBar = () => {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </>
   );
 };
 

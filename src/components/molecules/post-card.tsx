@@ -17,8 +17,7 @@ const Post = (props: Props) => {
   const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
   return (
-    <>
-      <Card>
+    <Card>
         <Link href={`/posts/${props.slug}`}>
           <CardHeader>
             <Image
@@ -35,7 +34,6 @@ const Post = (props: Props) => {
           </CardHeader>
         </Link>
       </Card>
-    </>
   );
 };
 

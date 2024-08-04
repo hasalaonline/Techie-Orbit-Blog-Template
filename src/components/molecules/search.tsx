@@ -8,18 +8,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<PostOrPage[]>([]);
 
   const {
     data: posts,
-    isLoading,
-    error,
   } = useQuery({ queryKey: ["posts"], queryFn: () => fetchPosts() });
 
   const handleSearch = (e: { target: { value: string } }) => {
     const searchTerm = e.target.value.toLowerCase();
-    setSearchTerm(searchTerm);
 
     const filteredPosts =
       posts?.filter(
@@ -34,12 +30,11 @@ const Search = () => {
   };
 
   return (
-    <>
-      <div className="relative">
+    <div className="relative">
         <Input
           type="text"
           placeholder="Search"
-          className="w-80 mt-8 "
+          className="w-80 mt-8 rounded-xl"
           onChange={handleSearch}
         />
         {searchResults.length > 0 && (
@@ -61,7 +56,6 @@ const Search = () => {
           </div>
         )}
       </div>
-    </>
   );
 };
 

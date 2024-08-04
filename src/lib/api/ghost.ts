@@ -49,13 +49,3 @@ export async function fetchTags() {
       throw error;
   }
 }
-
-export async function searchPos() {
-  try {
-      const response = await api.tags.browse();
-      return response;
-  } catch (error) {
-      console.error("Error fetching posts:", error);
-      throw error;
-  }
-}

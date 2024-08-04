@@ -35,8 +35,7 @@ const Hero = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <>
-      <div className="mt-10 flex flex-col items-center px-4">
+    <div className="mt-10 flex flex-col items-center px-4">
         <ul className="w-full max-w-4xl">
           {posts?.map((post: any) => (
             <li
@@ -66,7 +65,6 @@ const Hero = () => {
           ))}
         </ul>
       </div>
-    </>
   );
 };
 
