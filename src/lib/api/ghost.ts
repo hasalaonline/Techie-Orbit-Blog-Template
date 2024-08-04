@@ -8,9 +8,10 @@ const api = new GhostContentAPI({
 
 export default api;
 
-export async function fetchPosts() {
+export async function fetchPosts(page = 1, limit = 10) {
   const posts = await api.posts.browse({
-    limit: "all",
+    limit,
+    page,
     include: ["tags", "authors"],
   });
   return posts;
