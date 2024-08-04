@@ -1,6 +1,6 @@
 "use client";
 import Header from "../../components/organisms/Header";
-import Footer from "../../components/organisms/Footer";
+import Footer from "../../components/organisms/footer";
 
 const Contact = ({ params }: { params: any }) => {
   return (

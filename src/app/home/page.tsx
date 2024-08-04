@@ -1,5 +1,5 @@
 import Header from "../../components/organisms/Header";
-import Footer from "../../components/organisms/Footer";
+import Footer from "../../components/organisms/footer";
 import Hero from "../../components/organisms/Hero";
 import Posts from "../../components/organisms/Posts";
 
