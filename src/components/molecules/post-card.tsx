@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardDescription, CardHeader, CardTitle } from "../atoms/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "../atoms/Card";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -18,22 +18,22 @@ const Post = (props: Props) => {
 
   return (
     <Card>
-        <Link href={`/posts/${props.slug}`}>
-          <CardHeader>
-            <Image
-              src={props.featuredImage}
-              alt=""
-              width={300}
-              height={200}
-              className="w-full rounded-md mb-4"
-            />
-            <CardTitle>{props.title}</CardTitle>
-            <CardDescription>
-              {formattedDate} - {props.time} min read
-            </CardDescription>
-          </CardHeader>
-        </Link>
-      </Card>
+      <Link href={`/posts/${props.slug}`}>
+        <CardHeader>
+          <Image
+            src={props.featuredImage}
+            alt=""
+            width={300}
+            height={200}
+            className="w-full rounded-md mb-4"
+          />
+          <CardTitle>{props.title}</CardTitle>
+          <CardDescription>
+            {formattedDate} - {props.time} min read
+          </CardDescription>
+        </CardHeader>
+      </Link>
+    </Card>
   );
 };
 

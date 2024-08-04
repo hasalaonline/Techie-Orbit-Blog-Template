@@ -1,6 +1,6 @@
 "use client";
 import Header from "../../../components/organisms/Header";
-import Footer from "../../../components/organisms/footer";
+import Footer from "../../../components/organisms/Footer";
 
 const TagDetails = ({ params }: { params: any }) => {
   return (

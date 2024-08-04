@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import NavBar from "../molecules/nav-bar";
+import NavBar from "../molecules/Nav-Bar";
 import Image from "next/image";
 import Link from "next/link";
-import Search from "../molecules/search";
+import Search from "../molecules/Search";
 import { Menu, X } from "lucide-react"; // Import icons for menu and close
 
 const Header = () => {
