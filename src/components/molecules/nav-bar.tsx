@@ -9,10 +9,17 @@ import {
   navigationMenuTriggerStyle,
 } from "../atoms/navigation-menu";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTags } from "../../lib/api/ghost";
 
 const NavBar = () => {
-  const { data } = useQuery({ queryKey: ["tags"], queryFn: () => fetchTags() });
+  const { data } = useQuery({ queryKey: ["tags"], queryFn: async () => {
+    const response = await fetch(
+      `/api/tags`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch posts");
+    }
+    return response.json();
+  } });
   const tags: { title: string; href: string; description: string }[] = [
     ...(data?.map((tag: any) => ({
       title: tag.name,

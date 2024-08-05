@@ -25,7 +25,7 @@ const Posts = () => {
     queryKey: ["posts", page, limit],
     queryFn: async () => {
       const response = await fetch(
-        `/api/secure-posts?page=${page}&limit=${limit}`
+        `/api/posts?page=${page}&limit=${limit}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch posts");

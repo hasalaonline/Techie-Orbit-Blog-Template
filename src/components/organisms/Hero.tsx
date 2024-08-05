@@ -2,19 +2,40 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardDescription, CardHeader, CardTitle } from "../atoms/card";
-import { fetchFeaturedPost } from "../../lib/api/ghost";
 import Link from "next/link";
 import { TailSpin } from "react-loader-spinner";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/atoms/carousel";
 
-const Hero = () => {
+interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  feature_image: string;
+  published_at: string;
+  reading_time: number;
+}
+
+const Hero: React.FC = () => {
   const {
     data: posts,
     isLoading,
     error,
-  } = useQuery({
+  } = useQuery<Post[]>({
     queryKey: ["featuredPost"],
-    queryFn: () => fetchFeaturedPost(),
+    queryFn: async () => {
+      const response = await fetch(`/api/featured`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+      }
+      return response.json();
+    },
   });
 
   if (isLoading)
@@ -26,8 +47,6 @@ const Hero = () => {
           color="#4fa94d"
           ariaLabel="tail-spin-loading"
           radius="1"
-          wrapperStyle={{}}
-          wrapperClass=""
           visible={true}
         />
       </div>
@@ -36,34 +55,41 @@ const Hero = () => {
 
   return (
     <div className="mt-10 flex flex-col items-center px-4">
-      <ul className="w-full max-w-4xl">
-        {posts?.map((post: any) => (
-          <li
-            key={post.id}
-            className="relative flex flex-col items-center sm:items-start"
-          >
-            <Image
-              src={post.feature_image}
-              alt={post.title}
-              width={800}
-              height={600}
-              className="w-full max-w-4xl rounded-3xl"
-            />
-            <div className="absolute bottom-[-20px] sm:bottom-[-40px] sm:left-20 w-full px-4 sm:w-auto sm:px-0">
-              <Card className="w-full sm:w-auto">
-                <Link href={`/posts/${post.slug}`}>
-                  <CardHeader>
-                    <CardTitle>{post.title}</CardTitle>
-                    <CardDescription>
-                      {post.published_at} - {post.reading_time} min read
-                    </CardDescription>
-                  </CardHeader>
-                </Link>
-              </Card>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <h2 className="font-bold text-xl mb-4 text-center sm:text-left">
+          Featured Stories
+        </h2>
+      <Carousel className="w-full max-w-2xl">
+        <CarouselContent>
+          {posts?.map((post) => (
+            <CarouselItem key={post.id}>
+              <div className="relative">
+                <Image
+                  src={post.feature_image}
+                  alt={post.title}
+                  width={800}
+                  height={600}
+                  className="w-full max-w-4xl rounded-3xl"
+                />
+                <div className="">
+                  <Card className="w-full sm:w-auto">
+                    <Link href={`/posts/${post.slug}`}>
+                      <CardHeader>
+                        <CardTitle>{post.title}</CardTitle>
+                        <CardDescription>
+                          {new Date(post.published_at).toLocaleDateString()} -{" "}
+                          {post.reading_time} min read
+                        </CardDescription>
+                      </CardHeader>
+                    </Link>
+                  </Card>
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </div>
   );
 };

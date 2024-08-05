@@ -2,7 +2,6 @@
 import Header from "../../../components/organisms/Header";
 import Footer from "../../../components/organisms/footer";
 import PostPage from "../../../components/organisms/SinglePost";
-import { fetchPost } from "../../../lib/api/ghost";
 import { Post } from "../../../lib/types/post";
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
@@ -12,7 +11,13 @@ const PostDetail = ({ params }: { params: any }) => {
 
   const { data, isLoading, error } = useQuery({
     queryKey: [slug],
-    queryFn: () => fetchPost(slug),
+    queryFn: async () => {
+      const response = await fetch(`/api/post?slug=${slug}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    },
   });
 
   if (isLoading)
@@ -35,16 +40,16 @@ const PostDetail = ({ params }: { params: any }) => {
 
   if (!data) return <p>No data found</p>;
 
-  const date = new Date(data?.published_at ?? "");
+  const date = new Date(data[0]?.published_at ?? "");
 
   const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
   const post: Post = {
-    title: data?.title,
-    featuredImage: data?.feature_image,
+    title: data[0]?.title,
+    featuredImage: data[0]?.feature_image,
     date: formattedDate,
-    content: data?.html,
-    authors: data?.authors,
+    content: data[0]?.html,
+    authors: data[0]?.authors,
   };
 
   return (
