@@ -1,4 +1,5 @@
 import axios from "axios";
+import { NextRequest } from "next/server";
 
 const api = axios.create({
   baseURL: "https://demo.ghost.io/ghost/api/content",
@@ -7,9 +8,9 @@ const api = axios.create({
   },
 });
 
-export async function GET(request: { url: string | URL; }) {
+export async function GET(request: { url: Request | NextRequest }) {
   const baseURL = process.env.BASE_URL || "http://localhost:3000";
-  const url = new URL(request.url, baseURL);
+  const url = new URL(request.url.toString(), baseURL);
 
   const page = Number(url.searchParams.get("page")) || 1;
   const limit = Number(url.searchParams.get("limit")) || 9;
