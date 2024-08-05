@@ -8,7 +8,7 @@ const api = axios.create({
   },
 });
 
-export async function GET(request: { url: Request | NextRequest }) {
+export async function GET(request: Request | NextRequest) {
   const baseURL = process.env.BASE_URL || "http://localhost:3000";
   const url = new URL(request.url.toString(), baseURL);
 
