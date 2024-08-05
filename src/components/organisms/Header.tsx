@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import NavBar from "../molecules/nav-bar";
 import Image from "next/image";
 import Link from "next/link";
-import Search from "../molecules/search";
+// import Search from "../molecules/search";
 import { Menu, X } from "lucide-react"; // Import icons for menu and close
 
 const Header = () => {
@@ -28,9 +28,9 @@ const Header = () => {
           <NavBar />
         </div>
 
-        <div className="hidden sm:block">
+        {/* <div className="hidden sm:block">
           <Search />
-        </div>
+        </div> */}
 
         {/* Mobile Menu Toggle */}
         <button
@@ -60,7 +60,7 @@ const Header = () => {
             </button>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Search />
+            {/* <Search /> */}
             <NavBar />
           </div>
         </div>

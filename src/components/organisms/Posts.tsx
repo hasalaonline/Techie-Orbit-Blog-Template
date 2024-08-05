@@ -1,18 +1,38 @@
 "use client";
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchPosts } from "../../lib/api/ghost";
 import Post from "../molecules/post-card";
 import { TailSpin } from "react-loader-spinner";
+
+type PostType = {
+  id: string;
+  slug: string;
+  title: string;
+  feature_image: string;
+  published_at: string;
+  reading_time: number;
+};
 
 const Posts = () => {
   const [page, setPage] = useState(1);
   const [limit] = useState(9);
+
   const {
     data: posts,
     isLoading,
     error,
-  } = useQuery({ queryKey: ["posts", page], queryFn: () => fetchPosts(page, limit) });
+  } = useQuery<PostType[]>({
+    queryKey: ["posts", page, limit],
+    queryFn: async () => {
+      const response = await fetch(
+        `/api/secure-posts?page=${page}&limit=${limit}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch posts");
+      }
+      return response.json();
+    },
+  });
 
   if (isLoading)
     return (
@@ -35,9 +55,11 @@ const Posts = () => {
   return (
     <div className="w-full flex justify-center mt-20 sm:mt-40 px-4 sm:px-0">
       <div className="w-full max-w-[1000px]">
-        <h2 className="font-bold text-xl mb-4 text-center sm:text-left">Latest Posts</h2>
+        <h2 className="font-bold text-xl mb-4 text-center sm:text-left">
+          Latest Posts
+        </h2>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {posts?.map((post: any) => (
+          {posts?.map((post: PostType) => (
             <Post
               key={post.slug}
               featuredImage={post.feature_image}
@@ -49,15 +71,17 @@ const Posts = () => {
           ))}
         </div>
         <div className="flex justify-between mt-8">
-          <button 
-            onClick={() => setPage((prev) => Math.max(prev - 1, 1))} 
-            disabled={page === 1} 
-            className="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+          <button
+            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+            disabled={page === 1}
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
+          >
             Previous
           </button>
-          <button 
-            onClick={() => setPage((prev) => prev + 1)} 
-            className="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+          <button
+            onClick={() => setPage((prev) => prev + 1)}
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
+          >
             Next
           </button>
         </div>
