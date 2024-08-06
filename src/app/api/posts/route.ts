@@ -1,4 +1,4 @@
-import { api } from "@/lib/api/api";
+import { getPosts } from "@/lib/api/api";
 import { NextRequest } from "next/server";
 
 export async function GET(request: Request | NextRequest) {
@@ -8,23 +8,5 @@ export async function GET(request: Request | NextRequest) {
   const limit = Number(url.searchParams.get("limit")) || 9;
   const filter = url.searchParams.get("filter") || "";
 
-  try {
-    const response = await api.get("/posts/", {
-      params: {
-        limit,
-        page,
-        include: "count.posts",
-        filter: filter,
-      },
-    });
-    return new Response(JSON.stringify(response.data), {
-      headers: { "Content-Type": "application/json" },
-      status: 200,
-    });
-  } catch (error) {
-    return new Response(JSON.stringify({ error: error }), {
-      headers: { "Content-Type": "application/json" },
-      status: 500,
-    });
-  }
+  return getPosts(page, limit, filter);
 }
