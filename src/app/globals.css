@@ -1,3 +1,6 @@
+@import "./cards.css";
+@import "./content.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -84,7 +87,7 @@
 }
 
 .post-body h2 {
-  @apply text-2xl font-bold my-8;
+  @apply text-2xl font-bold my-8 max-w-[720px] mx-auto;
 }
 
 .post-body h3 {
@@ -94,9 +97,8 @@
 menu,
 ol,
 ul {
+  @apply my-5;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .post-body ol,
