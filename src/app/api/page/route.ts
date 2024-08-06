@@ -2,8 +2,7 @@ import { api } from "@/lib/api/api";
 import { NextRequest } from "next/server";
 
 export async function GET(request: Request | NextRequest) {
-  const baseURL = process.env.BASE_URL || "http://localhost:3000";
-  const url = new URL(request.url.toString(), baseURL);
+  const url = new URL(request.url.toString());
 
   const slug = url.searchParams.get("slug");
 
