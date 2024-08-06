@@ -1,11 +1,4 @@
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: "https://demo.ghost.io/ghost/api/content",
-  params: {
-    key: process.env.GHOST_API_KEY,
-  },
-});
+import { api } from "@/lib/api/api";
 
 export async function GET() {
   try {

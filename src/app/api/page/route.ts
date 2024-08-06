@@ -1,12 +1,5 @@
-import axios from "axios";
+import { api } from "@/lib/api/api";
 import { NextRequest } from "next/server";
-
-const api = axios.create({
-  baseURL: "https://demo.ghost.io/ghost/api/content",
-  params: {
-    key: process.env.GHOST_API_KEY,
-  },
-});
 
 export async function GET(request: Request | NextRequest) {
   const baseURL = process.env.BASE_URL || "http://localhost:3000";
