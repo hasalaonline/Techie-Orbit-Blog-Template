@@ -68,7 +68,14 @@ const Posts = () => {
             <button
               onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
               disabled={page === 1}
-              className="absolute left-0 px-4 py-2 bg-gray-200 text-gray-700 rounded"
+              className={`absolute left-0 px-4 py-2 bg-gray-200 text-gray-700 rounded 
+                 ${
+                   page === 1
+                     ? "opacity-50 cursor-not-allowed"
+                     : "hover:bg-gray-300 focus:ring-2 focus:ring-indigo-500"
+                 }`}
+              aria-label="Previous page"
+              aria-disabled={page === 1}
             >
               <ArrowLeft />
             </button>
@@ -78,7 +85,14 @@ const Posts = () => {
             <button
               onClick={() => setPage((prev) => prev + 1)}
               disabled={data?.posts.length === totalPosts}
-              className="absolute right-0 px-4 py-2 bg-gray-200 text-gray-700 rounded"
+              className={`absolute right-0 px-4 py-2 bg-gray-200 text-gray-700 rounded 
+                 ${
+                   data?.posts.length === totalPosts
+                     ? "opacity-50 cursor-not-allowed"
+                     : "hover:bg-gray-300 focus:ring-2 focus:ring-indigo-500"
+                 }`}
+              aria-label="Next page"
+              aria-disabled={data?.posts.length === totalPosts}
             >
               <ArrowRight />
             </button>
