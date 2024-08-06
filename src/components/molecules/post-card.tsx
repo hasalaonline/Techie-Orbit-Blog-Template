@@ -18,7 +18,7 @@ const Post = (props: Props) => {
 
   return (
     <Card>
-      <Link href={`/posts/${props.slug}`}>
+      <Link href={`/${props.slug}/`}>
         <CardHeader>
           <Image
             src={props.featuredImage}

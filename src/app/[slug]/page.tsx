@@ -1,0 +1,64 @@
+"use client";
+import Header from "../../components/organisms/Header";
+import Footer from "../../components/organisms/footer";
+import PostPage from "../../components/organisms/SinglePost";
+import { Post } from "../../lib/types/post";
+import { useQuery } from "@tanstack/react-query";
+import { TailSpin } from "react-loader-spinner";
+
+const PostDetail = ({ params }: { params: any }) => {
+  const { slug } = params;
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: [slug],
+    queryFn: async () => {
+      const response = await fetch(`/api/post?slug=${slug}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    },
+  });
+
+  if (isLoading)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <TailSpin
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    );
+
+  if (error) return <p>Error: {error.message}</p>;
+
+  if (!data) return <p>No data found</p>;
+
+  const date = new Date(data[0]?.published_at ?? "");
+
+  const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+
+  const post: Post = {
+    title: data[0]?.title,
+    featuredImage: data[0]?.feature_image,
+    date: formattedDate,
+    content: data[0]?.html,
+    authors: data[0]?.authors,
+  };
+
+  return (
+    <>
+      <Header />
+      <PostPage post={post} />
+      <Footer />
+    </>
+  );
+};
+
+export default PostDetail;
