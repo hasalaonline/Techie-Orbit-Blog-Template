@@ -20,9 +20,10 @@ export async function GET(request: Request | NextRequest) {
       params: {
         limit,
         page,
+        include: "count.posts",
       },
     });
-    return new Response(JSON.stringify(response.data.posts), {
+    return new Response(JSON.stringify(response.data), {
       headers: { "Content-Type": "application/json" },
       status: 200,
     });

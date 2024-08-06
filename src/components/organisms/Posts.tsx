@@ -1,38 +1,31 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Post from "../molecules/post-card";
 import { TailSpin } from "react-loader-spinner";
-
-type PostType = {
-  id: string;
-  slug: string;
-  title: string;
-  feature_image: string;
-  published_at: string;
-  reading_time: number;
-};
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const Posts = () => {
   const [page, setPage] = useState(1);
   const [limit] = useState(9);
+  const [totalPosts, setTotalPosts] = useState(0);
 
-  const {
-    data: posts,
-    isLoading,
-    error,
-  } = useQuery<PostType[]>({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["posts", page, limit],
     queryFn: async () => {
-      const response = await fetch(
-        `/api/posts?page=${page}&limit=${limit}`
-      );
+      const response = await fetch(`/api/posts?page=${page}&limit=${limit}`);
       if (!response.ok) {
         throw new Error("Failed to fetch posts");
       }
       return response.json();
     },
   });
+
+  useEffect(() => {
+    if (data?.meta) {
+      setTotalPosts(data.meta.pagination.total);
+    }
+  }, [data]);
 
   if (isLoading)
     return (
@@ -59,7 +52,7 @@ const Posts = () => {
           Latest Posts
         </h2>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {posts?.map((post: PostType) => (
+          {data?.posts.map((post: any) => (
             <Post
               key={post.slug}
               featuredImage={post.feature_image}
@@ -70,20 +63,26 @@ const Posts = () => {
             />
           ))}
         </div>
-        <div className="flex justify-between mt-8">
-          <button
-            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-            disabled={page === 1}
-            className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
-          >
-            Previous
-          </button>
-          <button
-            onClick={() => setPage((prev) => prev + 1)}
-            className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
-          >
-            Next
-          </button>
+        <div className="relative mt-8">
+          {page > 1 && (
+            <button
+              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+              disabled={page === 1}
+              className="absolute left-0 px-4 py-2 bg-gray-200 text-gray-700 rounded"
+            >
+              <ArrowLeft />
+            </button>
+          )}
+
+          {data?.posts.length === 9 && (
+            <button
+              onClick={() => setPage((prev) => prev + 1)}
+              disabled={data?.posts.length === totalPosts}
+              className="absolute right-0 px-4 py-2 bg-gray-200 text-gray-700 rounded"
+            >
+              <ArrowRight />
+            </button>
+          )}
         </div>
       </div>
     </div>
