@@ -6,6 +6,7 @@ export async function GET(request: Request | NextRequest) {
 
   const page = Number(url.searchParams.get("page")) || 1;
   const limit = Number(url.searchParams.get("limit")) || 9;
+  const filter = url.searchParams.get("filter") || "";
 
   try {
     const response = await api.get("/posts/", {
@@ -13,6 +14,7 @@ export async function GET(request: Request | NextRequest) {
         limit,
         page,
         include: "count.posts",
+        filter: filter,
       },
     });
     return new Response(JSON.stringify(response.data), {

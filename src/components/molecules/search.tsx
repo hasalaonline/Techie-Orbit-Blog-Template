@@ -44,7 +44,7 @@ const Search = () => {
         <Input
           type="text"
           placeholder="Search"
-          className="w-80 mt-8 rounded-xl"
+          className="w-80 rounded-xl"
           onChange={handleSearch}
         />
         {searchResults.length > 0 && (

@@ -1,14 +1,17 @@
 "use client";
+import Posts from "@/components/organisms/Posts";
 import Header from "../../../components/organisms/Header";
 import Footer from "../../../components/organisms/footer";
 
 const TagDetails = ({ params }: { params: any }) => {
+  const { slug } = params;
+
+  const filter = `&filter=tag:${slug}`;
+  
   return (
     <>
       <Header />
-      <h2 className="flex items-center justify-center h-screen">
-        Coming Soon....
-      </h2>
+      <Posts filter = { filter } title = { slug } />
       <Footer />
     </>
   );

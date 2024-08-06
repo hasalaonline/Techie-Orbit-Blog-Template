@@ -5,7 +5,12 @@ import Post from "../molecules/post-card";
 import { TailSpin } from "react-loader-spinner";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-const Posts = () => {
+interface Props {
+  filter?: string;
+  title?: string;
+}
+
+const Posts = ( { filter = "", title } : Props) => {
   const [page, setPage] = useState(1);
   const [limit] = useState(9);
   const [totalPosts, setTotalPosts] = useState(0);
@@ -13,7 +18,7 @@ const Posts = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["posts", page, limit],
     queryFn: async () => {
-      const response = await fetch(`/api/posts?page=${page}&limit=${limit}`);
+      const response = await fetch(`/api/posts?page=${page}&limit=${limit}` + filter);
       if (!response.ok) {
         throw new Error("Failed to fetch posts");
       }
@@ -49,7 +54,7 @@ const Posts = () => {
     <div className="w-full flex justify-center mt-20 sm:mt-20 px-4 sm:px-0">
       <div className="w-full max-w-[1000px]">
         <h2 className="font-bold text-xl mb-4 text-center sm:text-left">
-          Latest Posts
+          { title ?? "Latest Stories" }
         </h2>
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {data?.posts.map((post: any) => (

@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <Posts />
+      <Posts title="Latest Posts" />
       <Footer />
     </>
   );
