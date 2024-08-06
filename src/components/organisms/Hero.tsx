@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
                 />
                 <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-4">
                   <Card className="w-full sm:w-auto">
-                    <Link href={`/posts/${post.slug}`}>
+                    <Link href={`/${post.slug}/`}>
                       <CardHeader>
                         <CardTitle>{post.title}</CardTitle>
                         <CardDescription>
