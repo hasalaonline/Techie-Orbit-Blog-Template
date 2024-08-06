@@ -74,7 +74,9 @@ is the very first element in the post content */
 .gh-content > h1,
 .gh-content > h2,
 .gh-content > h3,
-.gh-content > h4 {
+.gh-content > h4,
+.gh-content > h5,
+.gh-content > h6 {
   max-width: 720px;
   margin: auto;
 }
@@ -181,7 +183,7 @@ h3 {
   overflow: auto;
   padding: 16px 20px;
   color: var(--color-wash);
-  font-size: 1.4rem;
+  font-size: 1rem;
   line-height: 1.5em;
   background: var(--color-darkgrey);
   border-radius: 5px;
@@ -357,32 +359,20 @@ iframe.instagram-media + script + :not([id]) {
 
 /* Tables */
 .gh-content table:not(.gist table) {
-  display: inline-block;
+  display: flex;
   overflow-x: auto;
-  max-width: 100%;
-  width: auto;
+  max-width: 720px;
   border-spacing: 0;
   border-collapse: collapse;
   font-family: var(--font-sans);
-  font-size: 1.6rem;
+  font-size: 1rem;
   white-space: nowrap;
   vertical-align: top;
   -webkit-overflow-scrolling: touch;
-  background: radial-gradient(
-        ellipse at left,
-        rgba(0, 0, 0, 0.2) 0%,
-        rgba(0, 0, 0, 0) 75%
-      )
-      0 center,
-    radial-gradient(
-        ellipse at right,
-        rgba(0, 0, 0, 0.2) 0%,
-        rgba(0, 0, 0, 0) 75%
-      )
-      100% center;
   background-attachment: scroll, scroll;
   background-size: 10px 100%, 10px 100%;
   background-repeat: no-repeat;
+  margin: auto;
 }
 
 .gh-content table:not(.gist table) td:first-child {
