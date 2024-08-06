@@ -24,7 +24,7 @@ const Footer = () => {
 
         <div className="grid grid-cols-2 gap-8">
           <div>
-            <h1 className="text-lg font-semibold text-center">Quick Links</h1>
+            <h1 className="text-lg font-semibold sm:text-left text-center">Quick Links</h1>
             <ul className="mt-4 space-y-4 text-center md:text-left">
               <li>
                 <Link href="/">Home</Link>
@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h1 className="text-lg font-semibold text-center">Legal</h1>
+            <h1 className="text-lg font-semibold sm:text-left text-center">Legal</h1>
             <ul className="mt-4 space-y-4 text-center md:text-left">
               <li>
                 <Link href="/privacy-policy"> Privacy Policy</Link>

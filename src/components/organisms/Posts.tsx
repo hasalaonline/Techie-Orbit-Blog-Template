@@ -46,7 +46,7 @@ const Posts = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="w-full flex justify-center mt-20 sm:mt-40 px-4 sm:px-0">
+    <div className="w-full flex justify-center mt-20 sm:mt-20 px-4 sm:px-0">
       <div className="w-full max-w-[1000px]">
         <h2 className="font-bold text-xl mb-4 text-center sm:text-left">
           Latest Posts
