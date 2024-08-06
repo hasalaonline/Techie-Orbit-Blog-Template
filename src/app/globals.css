@@ -74,3 +74,62 @@
     @apply bg-background text-foreground;
   }
 }
+
+.post-body p {
+  @apply my-5;
+}
+
+.post-body figcaption {
+  @apply text-sm text-center my-4 italic opacity-50;
+}
+
+.post-body h2 {
+  @apply text-2xl font-bold my-8;
+}
+
+.post-body h3 {
+  @apply text-xl font-bold my-8;
+}
+
+menu,
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-body ol,
+.post-body ul {
+  counter-reset: a;
+}
+
+.post-body ul > li:before {
+  content: "•";
+  opacity: 0.9;
+  transform: scale(1.5);
+}
+
+.post-body ol > li:before {
+  content: counter(a) ".";
+  counter-increment: a;
+  padding-right: 12px;
+}
+
+.post-body ol li:before,
+.post-body ul li:before {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-left: -22px;
+  position: absolute;
+  text-align: right;
+}
+
+.post-body li {
+  --tw-space-y-reverse: 0;
+  margin-bottom: 0;
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+  margin-top: 1.25rem;
+  margin-top: calc(1.25rem * (1 - var(--tw-space-y-reverse)));
+  padding-left: 1.625rem;
+}

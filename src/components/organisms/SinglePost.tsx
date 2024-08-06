@@ -11,7 +11,7 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
   const sanitizedHtml = DOMPurify.sanitize(post.content ?? "");
 
   return (
-    <div className="w-full flex justify-center mt-4 sm:mt-20 px-4">
+    <div className="post-body w-full flex justify-center mt-4 sm:mt-20 px-4">
       <div className="w-full max-w-[1000px]">
         <h1 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-10">
           {post.title}
