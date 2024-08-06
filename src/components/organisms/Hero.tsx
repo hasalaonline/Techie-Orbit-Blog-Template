@@ -56,8 +56,8 @@ const Hero: React.FC = () => {
   return (
     <div className="mt-10 flex flex-col items-center px-4">
       <h2 className="font-bold text-xl mb-4 text-center sm:text-left">
-          Featured Stories
-        </h2>
+        Featured Stories
+      </h2>
       <Carousel className="w-full max-w-2xl">
         <CarouselContent>
           {posts?.map((post) => (
@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
                   height={600}
                   className="w-full max-w-4xl rounded-3xl"
                 />
-                <div className="">
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-4">
                   <Card className="w-full sm:w-auto">
                     <Link href={`/posts/${post.slug}`}>
                       <CardHeader>
