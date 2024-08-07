@@ -8,7 +8,10 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <Posts title="Latest Posts" />
+      <h2 className="font-bold text-xl mb-4 text-center sm:text-left">
+          { "Latest Stories" }
+        </h2>
+      <Posts />
       <Footer />
     </>
   );
