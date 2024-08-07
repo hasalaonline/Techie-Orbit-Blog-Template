@@ -711,18 +711,18 @@ p.kg-collection-card-post-excerpt {
 
 @media (min-width: 640px) {
   .kg-collection-card-grid .kg-collection-card-content {
-    font-size: 1.6rem;
+    font-size: 16px;
   }
 }
 
 @media (min-width: 1024px) {
   .kg-collection-card-grid.columns-1 .kg-collection-card-content {
-    font-size: 1.8rem;
+    font-size: 16px;
   }
 
   .kg-collection-card-grid.columns-3 .kg-collection-card-content,
   .kg-collection-card-grid.columns-4 .kg-collection-card-content {
-    font-size: 1.5rem;
+    font-size: 16px;
   }
 }
 
@@ -745,7 +745,7 @@ p.kg-collection-card-post-excerpt {
 
   .kg-collection-card-grid:not(.columns-3):not(.columns-4)
     .kg-collection-card-post-meta {
-    font-size: 1.3rem;
+    font-size: 16px;
   }
 }
 
@@ -759,7 +759,7 @@ p.kg-collection-card-post-excerpt {
   }
 
   .kg-collection-card-grid.columns-1 .kg-collection-card-post-meta {
-    font-size: 1.4rem;
+    font-size: 16px;
   }
 }
 
