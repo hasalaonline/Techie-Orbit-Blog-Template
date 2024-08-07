@@ -111,3 +111,19 @@ export const getTags = async () => {
     });
   }
 };
+
+export const getTag = async (slug: string) => {
+  try {
+    const response = await api.get("/tags/slug/" + slug);
+
+    return new Response(JSON.stringify(response.data.tags), {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error }), {
+      headers: { "Content-Type": "application/json" },
+      status: 500,
+    });
+  }
+};

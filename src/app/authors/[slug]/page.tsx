@@ -13,7 +13,7 @@ const TagDetails = ({ params }: { params: any }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: [slug],
     queryFn: async () => {
-      const response = await fetch(`/api/tag?slug=${slug}`);
+      const response = await fetch(`/api/authors?slug=${slug}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -44,9 +44,7 @@ const TagDetails = ({ params }: { params: any }) => {
   return (
     <>
       <Header />
-      <h2 className="font-bold text-4xl text-center mb-4 mt-20 ml-60">{data[0]?.name}</h2>
-      <p className="text-center text-gray-500">{data[0]?.description}</p>
-      <Posts filter={filter} />
+        <h2 className="font-bold text-4xl text-center mb-4 mt-20 ml-60">Coming Soon...</h2>
       <Footer />
     </>
   );

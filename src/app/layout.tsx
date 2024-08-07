@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`w-full max-w-[1200px] mx-auto ${inter.className}`}>
         <Providers>
           {children}
           <Analytics />
