@@ -127,3 +127,41 @@ export const getTag = async (slug: string) => {
     });
   }
 };
+
+export const getAuthors = async ( page: number, limit: number, filter: string ) => {
+  try {
+    const response = await api.get("/authors/", {
+      params: {
+        limit,
+        page,
+        include: "count.authors",
+        filter: filter,
+      },
+    });
+    return new Response(JSON.stringify(response.data), {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error }), {
+      headers: { "Content-Type": "application/json" },
+      status: 500,
+    });
+  }
+};
+
+export const getAuthor = async (slug: string) => {
+  try {
+    const response = await api.get("/authors/slug/" + slug);
+
+    return new Response(JSON.stringify(response.data.authors), {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error }), {
+      headers: { "Content-Type": "application/json" },
+      status: 500,
+    });
+  }
+};

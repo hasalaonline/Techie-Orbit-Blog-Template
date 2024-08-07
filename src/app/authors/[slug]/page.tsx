@@ -4,16 +4,21 @@ import Header from "../../../components/organisms/Header";
 import Footer from "../../../components/organisms/footer";
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
+import { AvatarFallback, Avatar, AvatarImage } from "@/components/atoms/avatar";
+import Link from "next/link";
+import { FaXTwitter } from "react-icons/fa6";
+import { AiOutlineGlobal } from "react-icons/ai";
+import { FaFacebook } from "react-icons/fa";
 
-const TagDetails = ({ params }: { params: any }) => {
+const AuthorDetails = ({ params }: { params: any }) => {
   const { slug } = params;
 
-  const filter = `&filter=tag:${slug}`;
+  const filter = `&filter=author:${slug}`;
 
   const { data, isLoading, error } = useQuery({
-    queryKey: [slug],
+    queryKey: [slug, filter],
     queryFn: async () => {
-      const response = await fetch(`/api/authors?slug=${slug}`);
+      const response = await fetch(`/api/author?slug=${slug}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -44,10 +49,42 @@ const TagDetails = ({ params }: { params: any }) => {
   return (
     <>
       <Header />
-        <h2 className="font-bold text-4xl text-center mb-4 mt-20 ml-60">Coming Soon...</h2>
+      <Avatar className="mx-auto w-20 h-20 mt-10 mb-10">
+        <AvatarImage src={data[0]?.profile_image} />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      <h2 className="font-bold text-4xl text-center mb-4 ml-60">
+        {data[0]?.name}
+      </h2>
+      <p className="text-center text-gray-500">{data[0]?.bio}</p>
+      <div className="mt-4 flex justify-center space-x-4">
+        {data[0]?.twitter && (
+          <Link
+            href={data[0].twitter}
+            aria-label={`${data[0]?.name}'s Twitter`}
+          >
+            <FaXTwitter />
+          </Link>
+        )}
+        {data[0]?.facebook && (
+          <Link
+            href={data[0].facebook}
+            aria-label={`${data[0]?.name}'s Facebook`}
+          >
+            <FaFacebook />
+          </Link>
+        )}
+        {data[0]?.website && (
+          <Link href={data[0].website} aria-label={`${data[0]?.name}'s Website`}>
+            <AiOutlineGlobal />
+          </Link>
+        )}
+      </div>
+
+      <Posts filter={filter} />
       <Footer />
     </>
   );
 };
 
-export default TagDetails;
+export default AuthorDetails;
