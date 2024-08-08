@@ -57,7 +57,7 @@ const AuthorDetails = ({ params }: { params: any }) => {
         <AvatarImage src={data[0]?.profile_image} />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <h2 className="font-bold text-4xl text-center mb-4 ml-60">
+      <h2 className="font-bold text-4xl text-center mb-4 mx-auto">
         {data[0]?.name}
       </h2>
       <p className="text-center text-gray-500">{data[0]?.bio}</p>
