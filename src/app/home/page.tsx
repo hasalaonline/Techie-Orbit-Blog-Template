@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <h2 className="font-bold text-xl mb-4 text-center mx-auto">
+      <h2 className="font-bold text-xl text-center mx-auto">
           { "Latest Stories" }
         </h2>
       <Posts />

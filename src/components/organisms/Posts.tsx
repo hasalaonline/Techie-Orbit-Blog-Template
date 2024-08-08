@@ -61,6 +61,7 @@ const Posts = ( { filter = "" } : Props) => {
               date={post.published_at}
               time={post.reading_time}
               slug={post.slug}
+              excerpt={post.excerpt}
             />
           ))}
         </div>
