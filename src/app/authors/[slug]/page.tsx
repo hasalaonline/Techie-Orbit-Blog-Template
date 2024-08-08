@@ -2,7 +2,7 @@
 import Posts from "@/components/organisms/Posts";
 import Header from "../../../components/organisms/Header";
 import Footer from "../../../components/organisms/footer";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
 import { AvatarFallback, Avatar, AvatarImage } from "@/components/atoms/avatar";
 import Link from "next/link";
@@ -11,6 +11,10 @@ import { AiOutlineGlobal } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
 
 const AuthorDetails = ({ params }: { params: any }) => {
+  const queryClient = useQueryClient();
+
+  queryClient.removeQueries({ queryKey: ['posts'] });
+  
   const { slug } = params;
 
   const filter = `&filter=author:${slug}`;
