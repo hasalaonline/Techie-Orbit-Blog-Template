@@ -24,10 +24,10 @@ interface Post {
 
 const Hero: React.FC = () => {
   const {
-    data: posts,
+    data,
     isLoading,
     error,
-  } = useQuery<Post[]>({
+  } = useQuery({
     queryKey: ["featuredPost"],
     queryFn: async () => {
       const response = await fetch(`/api/featured`);
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
       </h2>
       <Carousel className="w-full max-w-2xl">
         <CarouselContent>
-          {posts?.map((post) => (
+          {data?.posts?.map((post: Post) => (
             <CarouselItem key={post.id}>
               <div className="relative">
                 <Image

@@ -16,7 +16,7 @@ export const getFeaturedPosts = async () => {
         include: ["tags", "authors"],
       },
     });
-    return new Response(JSON.stringify(response.data.posts), {
+    return new Response(JSON.stringify(response.data), {
       headers: { "Content-Type": "application/json" },
       status: 200,
     });
