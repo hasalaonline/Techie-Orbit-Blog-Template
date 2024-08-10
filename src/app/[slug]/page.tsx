@@ -1,25 +1,25 @@
-"use client";
-import Header from "../../components/organisms/Header";
-import Footer from "../../components/organisms/footer";
-import PostPage from "../../components/organisms/SinglePost";
-import { useQuery } from "@tanstack/react-query";
-import { TailSpin } from "react-loader-spinner";
+'use client'
+import Header from '../../components/organisms/Header'
+import Footer from '../../components/organisms/footer'
+import PostPage from '../../components/organisms/SinglePost'
+import { useQuery } from '@tanstack/react-query'
+import { TailSpin } from 'react-loader-spinner'
 
 const PostDetail = ({ params }: { params: any }) => {
-  const { slug } = params;
+  const { slug } = params
 
   const { data, isLoading, error } = useQuery({
     queryKey: [slug],
     queryFn: async () => {
-      const response = await fetch(`/api/post?slug=${slug}`);
+      const response = await fetch(`/api/post?slug=${slug}`)
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok')
       }
-      return response.json();
+      return response.json()
     },
-  });
+  })
 
-  const post = data?.[0];
+  const post = data?.[0]
 
   if (isLoading)
     return (
@@ -35,11 +35,11 @@ const PostDetail = ({ params }: { params: any }) => {
           visible={true}
         />
       </div>
-    );
+    )
 
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error: {error.message}</p>
 
-  if (!post) return <p>No data found</p>;
+  if (!post) return <p>No data found</p>
 
   return (
     <>
@@ -47,7 +47,7 @@ const PostDetail = ({ params }: { params: any }) => {
       <PostPage post={post} />
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default PostDetail;
+export default PostDetail

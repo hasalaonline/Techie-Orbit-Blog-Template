@@ -1,28 +1,28 @@
-"use client";
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import PostCard from "../molecules/post-card";
-import { TailSpin } from "react-loader-spinner";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Post } from "@/lib/types/post";
+'use client'
+import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import PostCard from '../molecules/post-card'
+import { TailSpin } from 'react-loader-spinner'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { Post } from '@/lib/types/post'
 
 interface Props {
-  filter?: string;
+  filter?: string
 }
 
-const Posts = ( { filter = "" } : Props) => {
-  const [page, setPage] = useState(1);
+const Posts = ({ filter = '' }: Props) => {
+  const [page, setPage] = useState(1)
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["posts", page],
+    queryKey: ['posts', page],
     queryFn: async () => {
-      const response = await fetch(`/api/posts?page=${page}&limit=9` + filter);
+      const response = await fetch(`/api/posts?page=${page}&limit=9` + filter)
       if (!response.ok) {
-        throw new Error("Failed to fetch posts");
+        throw new Error('Failed to fetch posts')
       }
-      return response.json();
+      return response.json()
     },
-  });
+  })
 
   if (isLoading)
     return (
@@ -38,23 +38,20 @@ const Posts = ( { filter = "" } : Props) => {
           visible={true}
         />
       </div>
-    );
+    )
 
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error: {error.message}</p>
 
   return (
     <div className="w-full flex justify-center mt-20 sm:mt-20 px-4">
       <div className="w-full max-w-[1000px]">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {data?.posts.map((post: Post, index: any) => (
-            <PostCard
-              key={index}
-              post={post}
-            />
+            <PostCard key={index} post={post} />
           ))}
         </div>
         <div className="relative mt-8">
-          {(data?.meta?.pagination?.prev !== null) && (
+          {data?.meta?.pagination?.prev !== null && (
             <button
               onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
               className={`absolute left-0 px-4 py-2 bg-gray-200 text-gray-700 rounded`}
@@ -64,10 +61,10 @@ const Posts = ( { filter = "" } : Props) => {
             </button>
           )}
 
-          {(data?.meta?.pagination?.next !== null) && (
+          {data?.meta?.pagination?.next !== null && (
             <button
               onClick={() => setPage((prev) => prev + 1)}
-              className={`absolute right-0 px-4 py-2 bg-gray-200 text-gray-700 rounded` }
+              className={`absolute right-0 px-4 py-2 bg-gray-200 text-gray-700 rounded`}
               aria-label="Next page"
             >
               <ArrowRight />
@@ -76,7 +73,7 @@ const Posts = ( { filter = "" } : Props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Posts;
+export default Posts

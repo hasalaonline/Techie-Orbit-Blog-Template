@@ -1,7 +1,7 @@
-import InfoPage from "@/components/organisms/InfoPage";
+import InfoPage from '@/components/organisms/InfoPage'
 
 const PrivacyPolicy = () => {
-  return <InfoPage slug="privacy" />;
-};
+  return <InfoPage slug="privacy" />
+}
 
-export default PrivacyPolicy;
+export default PrivacyPolicy

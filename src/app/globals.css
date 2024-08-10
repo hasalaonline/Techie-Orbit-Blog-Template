@@ -1,5 +1,5 @@
-@import "./cards.css";
-@import "./content.css";
+@import './cards.css';
+@import './content.css';
 
 @tailwind base;
 @tailwind components;
@@ -107,13 +107,13 @@ ul {
 }
 
 .post-body ul > li:before {
-  content: "•";
+  content: '•';
   opacity: 0.9;
   transform: scale(1.5);
 }
 
 .post-body ol > li:before {
-  content: counter(a) ".";
+  content: counter(a) '.';
   counter-increment: a;
   padding-right: 12px;
 }

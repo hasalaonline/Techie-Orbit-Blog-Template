@@ -1,6 +1,6 @@
-"use client";
-import Header from "../../components/organisms/Header";
-import Footer from "../../components/organisms/footer";
+'use client'
+import Header from '../../components/organisms/Header'
+import Footer from '../../components/organisms/footer'
 
 const TermsAndConditons = ({ params }: { params: any }) => {
   return (
@@ -11,7 +11,7 @@ const TermsAndConditons = ({ params }: { params: any }) => {
       </h2>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default TermsAndConditons;
+export default TermsAndConditons

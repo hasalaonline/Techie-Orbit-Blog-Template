@@ -1,25 +1,25 @@
-"use client";
-import { TailSpin } from "react-loader-spinner";
-import Footer from "./footer";
-import Header from "./Header";
-import { useQuery } from "@tanstack/react-query";
-import DOMPurify from "dompurify";
+'use client'
+import { TailSpin } from 'react-loader-spinner'
+import Footer from './footer'
+import Header from './Header'
+import { useQuery } from '@tanstack/react-query'
+import DOMPurify from 'dompurify'
 
 interface Props {
-  slug: string;
+  slug: string
 }
 
 const InfoPage = ({ slug }: Props) => {
   const { data, isLoading, error } = useQuery({
     queryKey: [slug],
     queryFn: async () => {
-      const response = await fetch(`/api/page?slug=${slug}`);
+      const response = await fetch(`/api/page?slug=${slug}`)
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok')
       }
-      return response.json();
+      return response.json()
     },
-  });
+  })
 
   if (isLoading)
     return (
@@ -35,13 +35,13 @@ const InfoPage = ({ slug }: Props) => {
           visible={true}
         />
       </div>
-    );
+    )
 
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <p>Error: {error.message}</p>
 
-  if (!data) return <p>No data found</p>;
+  if (!data) return <p>No data found</p>
 
-  const sanitizedHtml = DOMPurify.sanitize(data[0]?.html ?? "");
+  const sanitizedHtml = DOMPurify.sanitize(data[0]?.html ?? '')
 
   return (
     <>
@@ -56,7 +56,7 @@ const InfoPage = ({ slug }: Props) => {
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-export default InfoPage;
+export default InfoPage

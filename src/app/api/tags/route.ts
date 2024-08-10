@@ -1,5 +1,5 @@
-import { getTags } from "@/lib/api/api";
+import { getTags } from '@/lib/api/api'
 
 export async function GET() {
-  return getTags();
+  return getTags()
 }
