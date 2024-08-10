@@ -23,11 +23,7 @@ interface Post {
 }
 
 const Hero: React.FC = () => {
-  const {
-    data,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["featuredPost"],
     queryFn: async () => {
       const response = await fetch(`/api/featured`);
@@ -40,7 +36,10 @@ const Hero: React.FC = () => {
 
   if (isLoading)
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div
+        className="flex items-center justify-center"
+        style={{ height: "500px" }}
+      >
         <TailSpin
           height="80"
           width="80"
@@ -51,6 +50,7 @@ const Hero: React.FC = () => {
         />
       </div>
     );
+
   if (error) return <p>Error: {error.message}</p>;
 
   return (
@@ -62,33 +62,34 @@ const Hero: React.FC = () => {
         <CarouselContent>
           {data?.posts?.map((post: Post) => (
             <CarouselItem key={post.id}>
-              <div className="relative">
-                <Image
-                  src={post.feature_image}
-                  alt={post.title}
-                  width={800}
-                  height={600}
-                  className="w-full max-w-4xl rounded-3xl"
-                />
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-4">
-                  <Card className="w-full sm:w-auto">
-                    <Link href={`/${post.slug}/`}>
-                      <CardHeader>
-                        <CardTitle>{post.title}</CardTitle>
-                        <CardDescription>
-                          {new Date(post.published_at).toLocaleDateString()} -{" "}
-                          {post.reading_time} min read
-                        </CardDescription>
-                      </CardHeader>
-                    </Link>
-                  </Card>
+              <Card className="sm:flex items-center w-full max-w-4xl rounded-3xl">
+                <div className="sm:w-1/2">
+                  <Image
+                    src={post.feature_image}
+                    alt={post.title}
+                    width={800}
+                    height={600}
+                    className="w-full h-auto rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none"
+                  />
                 </div>
-              </div>
+
+                <div className="sm:w-1/2 p-4 rounded-l-3xl">
+                  <Link href={`/${post.slug}/`}>
+                    <CardHeader>
+                      <CardTitle>{post.title}</CardTitle>
+                      <CardDescription>
+                        {new Date(post.published_at).toLocaleDateString()} -{" "}
+                        {post.reading_time} min read
+                      </CardDescription>
+                    </CardHeader>
+                  </Link>
+                </div>
+              </Card>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="hidden sm:block" />
+        <CarouselNext className="hidden sm:block" />
       </Carousel>
     </div>
   );
