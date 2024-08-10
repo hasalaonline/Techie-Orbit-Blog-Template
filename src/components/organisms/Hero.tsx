@@ -14,6 +14,7 @@ import {
 } from "@/components/atoms/carousel";
 
 interface Post {
+  excerpt: string;
   id: string;
   title: string;
   slug: string;
@@ -21,6 +22,13 @@ interface Post {
   published_at: string;
   reading_time: number;
 }
+
+const MAX_EXCERPT_LENGTH = 100;
+
+const truncateExcerpt = (text: string, maxLength: number) => {
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength)}...`;
+};
 
 const Hero: React.FC = () => {
   const { data, isLoading, error } = useQuery({
@@ -76,7 +84,10 @@ const Hero: React.FC = () => {
                 <div className="sm:w-1/2 p-4 rounded-l-3xl">
                   <Link href={`/${post.slug}/`}>
                     <CardHeader>
-                      <CardTitle>{post.title}</CardTitle>
+                      <CardTitle className="text-[1rem]">{post.title}</CardTitle>
+                      <CardDescription>
+                        {truncateExcerpt(post.excerpt, MAX_EXCERPT_LENGTH)}
+                      </CardDescription>
                       <CardDescription>
                         {new Date(post.published_at).toLocaleDateString()} -{" "}
                         {post.reading_time} min read

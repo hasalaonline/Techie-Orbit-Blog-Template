@@ -42,7 +42,7 @@ const Posts = ( { filter = "" } : Props) => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="w-full flex justify-center mt-20 sm:mt-20 px-4 sm:px-0">
+    <div className="w-full flex justify-center mt-20 sm:mt-20 px-4">
       <div className="w-full max-w-[1000px]">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {data?.posts.map((post: any) => (
