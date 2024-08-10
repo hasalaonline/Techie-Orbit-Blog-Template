@@ -2,7 +2,6 @@
 import Header from "../../components/organisms/Header";
 import Footer from "../../components/organisms/footer";
 import PostPage from "../../components/organisms/SinglePost";
-import { Post } from "../../lib/types/post";
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
 
@@ -19,6 +18,8 @@ const PostDetail = ({ params }: { params: any }) => {
       return response.json();
     },
   });
+
+  const post = data?.[0];
 
   if (isLoading)
     return (
@@ -38,19 +39,7 @@ const PostDetail = ({ params }: { params: any }) => {
 
   if (error) return <p>Error: {error.message}</p>;
 
-  if (!data) return <p>No data found</p>;
-
-  const date = new Date(data[0]?.published_at ?? "");
-
-  const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-
-  const post: Post = {
-    title: data[0]?.title,
-    featuredImage: data[0]?.feature_image,
-    date: formattedDate,
-    content: data[0]?.html,
-    authors: data[0]?.authors,
-  };
+  if (!post) return <p>No data found</p>;
 
   return (
     <>

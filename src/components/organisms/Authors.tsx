@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { TailSpin } from "react-loader-spinner";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import Author from "../molecules/AuthorCard";
+import { Author } from "@/lib/types/author";
+import AuthorCard from "../molecules/AuthorCard";
 
 const Authors = () => {
   const [page, setPage] = useState(1);
@@ -50,17 +51,9 @@ const Authors = () => {
       <div className="w-full max-w-[1000px]">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {data?.authors.map((author: any) => (
-            <Author
+            <AuthorCard
               key={author.slug}
-              profileImage={author.profile_image}
-              name={author.name}
-              slug={author.slug}
-                bio={author.bio}
-                socialLinks={{
-                    twitter: author.twitter,
-                    facebook: author.facebook,
-                    web: author.website,
-                  }}
+              author={author}
             />
           ))}
         </div>

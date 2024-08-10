@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Post from "../molecules/post-card";
+import PostCard from "../molecules/post-card";
 import { TailSpin } from "react-loader-spinner";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Post } from "@/lib/types/post";
 
 interface Props {
   filter?: string;
@@ -45,15 +46,10 @@ const Posts = ( { filter = "" } : Props) => {
     <div className="w-full flex justify-center mt-20 sm:mt-20 px-4">
       <div className="w-full max-w-[1000px]">
         <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {data?.posts.map((post: any) => (
-            <Post
-              key={post.slug}
-              featuredImage={post.feature_image}
-              title={post.title}
-              date={post.published_at}
-              time={post.reading_time}
-              slug={post.slug}
-              excerpt={post.excerpt}
+          {data?.posts.map((post: Post, index: any) => (
+            <PostCard
+              key={index}
+              post={post}
             />
           ))}
         </div>

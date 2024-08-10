@@ -3,12 +3,12 @@ import React from "react";
 import DOMPurify from "dompurify";
 import Image from "next/image";
 
-interface PostPageProps {
+interface Props {
   post: Post;
 }
 
-const PostPage: React.FC<PostPageProps> = ({ post }) => {
-  const sanitizedHtml = DOMPurify.sanitize(post.content ?? "");
+const PostPage: React.FC<Props> = ({ post }) => {
+  const sanitizedHtml = DOMPurify.sanitize(post.html ?? "");
 
   return (
     <div className="post-body gh-content w-full flex justify-center mt-4 sm:mt-20 px-4">
@@ -17,13 +17,13 @@ const PostPage: React.FC<PostPageProps> = ({ post }) => {
           {post.title}
         </h1>
         {post.authors?.map((author, index) => (
-          <p key={post.title} className="text-sm mb-2 sm:mb-4">
+          <p key={index} className="text-sm mb-2 sm:mb-4">
             {author.name}
           </p>
         ))}
-        <p className="text-sm mb-4">{post.date}</p>
+        <p className="text-sm mb-4">{post.published_at}</p>
         <Image
-          src={post.featuredImage ?? ""}
+          src={post.feature_image ?? ""}
           alt=""
           width={1000}
           height={500}

@@ -12,16 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/atoms/carousel";
-
-interface Post {
-  excerpt: string;
-  id: string;
-  title: string;
-  slug: string;
-  feature_image: string;
-  published_at: string;
-  reading_time: number;
-}
+import { Post } from "@/lib/types/post";
 
 const MAX_EXCERPT_LENGTH = 100;
 
@@ -73,7 +64,7 @@ const Hero: React.FC = () => {
               <Card className="sm:flex items-center w-full max-w-4xl rounded-3xl">
                 <div className="sm:w-1/2">
                   <Image
-                    src={post.feature_image}
+                    src={post.feature_image ?? ""}
                     alt={post.title}
                     width={800}
                     height={600}
