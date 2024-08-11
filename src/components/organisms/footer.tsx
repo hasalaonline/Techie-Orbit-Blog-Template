@@ -74,6 +74,8 @@ const Footer = () => {
         </div>
       </div>
 
+      <hr className="my-6 border-gray-100" />
+
       <div className="my-10">
         <p className="text-center">
           &copy; 2024 Techie Orbit. All rights reserved.
