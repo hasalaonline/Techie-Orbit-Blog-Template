@@ -5,6 +5,7 @@ import PostCard from '../molecules/post-card'
 import { TailSpin } from 'react-loader-spinner'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Post } from '@/lib/types/post'
+import usePosts from '@/lib/hooks/useGetPosts'
 
 interface Props {
   filter?: string
@@ -13,16 +14,7 @@ interface Props {
 const Posts = ({ filter = '' }: Props) => {
   const [page, setPage] = useState(1)
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['posts', page],
-    queryFn: async () => {
-      const response = await fetch(`/api/posts?page=${page}&limit=9` + filter)
-      if (!response.ok) {
-        throw new Error('Failed to fetch posts')
-      }
-      return response.json()
-    },
-  })
+  const { data, isLoading, error } = usePosts(page, filter);
 
   if (isLoading)
     return (
@@ -54,7 +46,7 @@ const Posts = ({ filter = '' }: Props) => {
           {data?.meta?.pagination?.prev !== null && (
             <button
               onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-              className={`absolute left-0 px-4 py-2 bg-gray-200 text-gray-700 rounded`}
+              className={`absolute left-0 px-4 py-2 text-gray-700 rounded`}
               aria-label="Previous page"
             >
               <ArrowLeft />
@@ -64,7 +56,7 @@ const Posts = ({ filter = '' }: Props) => {
           {data?.meta?.pagination?.next !== null && (
             <button
               onClick={() => setPage((prev) => prev + 1)}
-              className={`absolute right-0 px-4 py-2 bg-gray-200 text-gray-700 rounded`}
+              className={`absolute right-0 px-4 py-2 text-gray-700 rounded`}
               aria-label="Next page"
             >
               <ArrowRight />

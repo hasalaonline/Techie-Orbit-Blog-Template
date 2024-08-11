@@ -54,7 +54,7 @@ export const getPage = async (slug: string) => {
   try {
     const response = await api.get('/pages/slug/' + slug)
 
-    return new Response(JSON.stringify(response.data.pages), {
+    return new Response(JSON.stringify(response.data.pages[0]), {
       headers: { 'Content-Type': 'application/json' },
       status: 200,
     })
@@ -83,9 +83,13 @@ export const searchPosts = async () => {
 
 export const getPost = async (slug: string) => {
   try {
-    const response = await api.get('/posts/slug/' + slug)
+    const response = await api.get('/posts/slug/' + slug, {
+      params: {
+        include: ['tags', 'authors']
+      },
+    })
 
-    return new Response(JSON.stringify(response.data.posts), {
+    return new Response(JSON.stringify(response.data.posts[0]), {
       headers: { 'Content-Type': 'application/json' },
       status: 200,
     })
