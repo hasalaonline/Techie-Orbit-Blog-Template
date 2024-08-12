@@ -1,9 +1,9 @@
-"use client";
-import Posts from "@/components/organisms/Posts";
-import Header from "../../../components/organisms/Header";
-import Footer from "../../../components/organisms/footer";
-import { useQuery } from "@tanstack/react-query";
-import { TailSpin } from "react-loader-spinner";
+'use client';
+import Posts from '@/components/organisms/Posts';
+import Header from '../../../components/organisms/Header';
+import Footer from '../../../components/organisms/footer';
+import { useQuery } from '@tanstack/react-query';
+import { TailSpin } from 'react-loader-spinner';
 
 const TagDetails = ({ params }: { params: any }) => {
   const { slug } = params;
@@ -15,7 +15,7 @@ const TagDetails = ({ params }: { params: any }) => {
     queryFn: async () => {
       const response = await fetch(`/api/tag?slug=${slug}`);
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok');
       }
       return response.json();
     },
@@ -44,7 +44,9 @@ const TagDetails = ({ params }: { params: any }) => {
   return (
     <>
       <Header />
-      <h2 className="font-bold text-4xl text-center mb-4 mt-20 ml-60">{data[0]?.name}</h2>
+      <h2 className="font-bold text-4xl text-center mb-4 mt-20 mx-auto">
+        {data[0]?.name}
+      </h2>
       <p className="text-center text-gray-500">{data[0]?.description}</p>
       <Posts filter={filter} />
       <Footer />

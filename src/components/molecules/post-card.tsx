@@ -1,35 +1,47 @@
-import React from "react";
-import { Card, CardDescription, CardHeader, CardTitle } from "../atoms/card";
-import Link from "next/link";
-import Image from "next/image";
+import React from 'react';
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from '../atoms/card';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Post } from '@/lib/types/post';
 
 interface Props {
-  featuredImage: string;
-  title: string;
-  date: string;
-  time: number;
-  slug: string;
+  post: Post;
 }
 
-const Post = (props: Props) => {
-  const date = new Date(props.date);
+const MAX_EXCERPT_LENGTH = 100;
 
+const truncateExcerpt = (text: string, maxLength: number) => {
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength)}...`;
+};
+
+const PostCard = ({ post }: Props) => {
+  const date = new Date(post.published_at);
   const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+
+  const truncatedExcerpt = truncateExcerpt(post.excerpt, MAX_EXCERPT_LENGTH);
 
   return (
     <Card>
-      <Link href={`/${props.slug}/`}>
+      <Link href={`/${post.slug}/`}>
         <CardHeader>
           <Image
-            src={props.featuredImage}
-            alt=""
+            src={post.feature_image ?? ''}
+            alt={post.title}
             width={300}
             height={200}
             className="w-full rounded-md mb-4"
           />
-          <CardTitle>{props.title}</CardTitle>
+          <CardTitle className="text-[1rem]">{post.title}</CardTitle>
+          <CardDescription>{truncatedExcerpt}</CardDescription>
           <CardDescription>
-            {formattedDate} - {props.time} min read
+            {formattedDate} - {post.reading_time} min read
           </CardDescription>
         </CardHeader>
       </Link>
@@ -37,4 +49,4 @@ const Post = (props: Props) => {
   );
 };
 
-export default Post;
+export default PostCard;

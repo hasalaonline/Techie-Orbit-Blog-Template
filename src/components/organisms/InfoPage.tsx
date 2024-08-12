@@ -1,25 +1,16 @@
-"use client";
-import { TailSpin } from "react-loader-spinner";
-import Footer from "./footer";
-import Header from "./Header";
-import { useQuery } from "@tanstack/react-query";
-import DOMPurify from "dompurify";
+'use client';
+import { TailSpin } from 'react-loader-spinner';
+import Footer from './footer';
+import Header from './Header';
+import DOMPurify from 'dompurify';
+import useGetInfoPage from '@/lib/hooks/useGetInfoPage';
 
 interface Props {
   slug: string;
 }
 
 const InfoPage = ({ slug }: Props) => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: [slug],
-    queryFn: async () => {
-      const response = await fetch(`/api/page?slug=${slug}`);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    },
-  });
+  const { data, isLoading, error } = useGetInfoPage(slug);
 
   if (isLoading)
     return (
@@ -41,7 +32,7 @@ const InfoPage = ({ slug }: Props) => {
 
   if (!data) return <p>No data found</p>;
 
-  const sanitizedHtml = DOMPurify.sanitize(data[0]?.html ?? "");
+  const sanitizedHtml = DOMPurify.sanitize(data.html);
 
   return (
     <>

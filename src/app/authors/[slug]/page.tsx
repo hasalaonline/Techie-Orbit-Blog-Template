@@ -1,16 +1,20 @@
-"use client";
-import Posts from "@/components/organisms/Posts";
-import Header from "../../../components/organisms/Header";
-import Footer from "../../../components/organisms/footer";
-import { useQuery } from "@tanstack/react-query";
-import { TailSpin } from "react-loader-spinner";
-import { AvatarFallback, Avatar, AvatarImage } from "@/components/atoms/avatar";
-import Link from "next/link";
-import { FaXTwitter } from "react-icons/fa6";
-import { AiOutlineGlobal } from "react-icons/ai";
-import { FaFacebook } from "react-icons/fa";
+'use client';
+import Posts from '@/components/organisms/Posts';
+import Header from '../../../components/organisms/Header';
+import Footer from '../../../components/organisms/footer';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { TailSpin } from 'react-loader-spinner';
+import { AvatarFallback, Avatar, AvatarImage } from '@/components/atoms/avatar';
+import Link from 'next/link';
+import { FaXTwitter } from 'react-icons/fa6';
+import { AiOutlineGlobal } from 'react-icons/ai';
+import { FaFacebook } from 'react-icons/fa';
 
 const AuthorDetails = ({ params }: { params: any }) => {
+  const queryClient = useQueryClient();
+
+  queryClient.removeQueries({ queryKey: ['posts'] });
+
   const { slug } = params;
 
   const filter = `&filter=author:${slug}`;
@@ -20,7 +24,7 @@ const AuthorDetails = ({ params }: { params: any }) => {
     queryFn: async () => {
       const response = await fetch(`/api/author?slug=${slug}`);
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok');
       }
       return response.json();
     },
@@ -53,7 +57,7 @@ const AuthorDetails = ({ params }: { params: any }) => {
         <AvatarImage src={data[0]?.profile_image} />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <h2 className="font-bold text-4xl text-center mb-4 ml-60">
+      <h2 className="font-bold text-4xl text-center mb-4 mx-auto">
         {data[0]?.name}
       </h2>
       <p className="text-center text-gray-500">{data[0]?.bio}</p>
@@ -75,7 +79,10 @@ const AuthorDetails = ({ params }: { params: any }) => {
           </Link>
         )}
         {data[0]?.website && (
-          <Link href={data[0].website} aria-label={`${data[0]?.name}'s Website`}>
+          <Link
+            href={data[0].website}
+            aria-label={`${data[0]?.name}'s Website`}
+          >
             <AiOutlineGlobal />
           </Link>
         )}

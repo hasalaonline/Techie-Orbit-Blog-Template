@@ -1,6 +1,6 @@
-import { HomeIcon, MailIcon, PhoneIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { HomeIcon, MailIcon, PhoneIcon } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -24,7 +24,9 @@ const Footer = () => {
 
         <div className="grid grid-cols-2 gap-8">
           <div>
-            <h1 className="text-lg font-semibold sm:text-left text-center">Quick Links</h1>
+            <h1 className="text-lg font-semibold sm:text-left text-center">
+              Quick Links
+            </h1>
             <ul className="mt-4 space-y-4 text-center md:text-left">
               <li>
                 <Link href="/">Home</Link>
@@ -42,7 +44,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h1 className="text-lg font-semibold sm:text-left text-center">Legal</h1>
+            <h1 className="text-lg font-semibold sm:text-left text-center">
+              Legal
+            </h1>
             <ul className="mt-4 space-y-4 text-center md:text-left">
               <li>
                 <Link href="/privacy-policy"> Privacy Policy</Link>
@@ -69,6 +73,8 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+
+      <hr className="my-6 border-gray-100" />
 
       <div className="my-10">
         <p className="text-center">

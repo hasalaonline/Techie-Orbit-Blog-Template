@@ -1,10 +1,10 @@
-"use client";
-import React, { useState } from "react";
-import NavBar from "../molecules/nav-bar";
-import Image from "next/image";
-import Link from "next/link";
-import Search from "../molecules/search";
-import { Menu, X } from "lucide-react";
+'use client';
+import React, { useState } from 'react';
+import NavBar from '../molecules/nav-bar';
+import Image from 'next/image';
+import Link from 'next/link';
+import Search from '../molecules/search';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,9 +34,9 @@ const Header = () => {
 
       {/* Mobile Menu Toggle */}
       <button
-        className="block sm:hidden focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        className="block sm:hidden m:hidden focus:outline-none focus:ring-2 focus:ring-indigo-500"
         onClick={toggleMenu}
-        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         aria-expanded={isMenuOpen}
       >
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -45,7 +45,7 @@ const Header = () => {
       {/* Mobile Sliding Menu */}
       <div
         className={`fixed top-0 left-0 w-full h-full bg-white transform ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-300 ease-in-out z-50 sm:hidden`}
       >
         <div className="flex justify-between items-center px-4 py-3 border-b">

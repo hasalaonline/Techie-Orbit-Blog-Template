@@ -1,16 +1,13 @@
-import { Author } from './author';
-import { Tag } from './tag';
-
-export type Post = {
+export type Page = {
+  slug: string;
   id: string;
   uuid: string;
   title: string;
-  slug: string;
   html: string;
   comment_id: string;
   feature_image: string | null;
   featured: boolean;
-  visibility: 'public' | 'private';
+  visibility: string;
   created_at: string;
   updated_at: string;
   published_at: string;
@@ -19,10 +16,7 @@ export type Post = {
   codeinjection_foot: string | null;
   custom_template: string | null;
   canonical_url: string | null;
-  tags: Tag[];
-  authors: Author[];
-  primary_author: Author;
-  primary_tag: Tag;
+  show_title_and_feature_image: boolean;
   url: string;
   excerpt: string;
   reading_time: number;
@@ -36,7 +30,6 @@ export type Post = {
   twitter_description: string | null;
   meta_title: string | null;
   meta_description: string | null;
-  email_subject: string | null;
   frontmatter: string | null;
   feature_image_alt: string | null;
   feature_image_caption: string | null;
