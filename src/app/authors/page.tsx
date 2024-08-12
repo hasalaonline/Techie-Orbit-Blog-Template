@@ -1,6 +1,6 @@
-import Authors from '@/components/organisms/Authors'
-import Header from '../../components/organisms/Header'
-import Footer from '../../components/organisms/footer'
+import Authors from '@/components/organisms/Authors';
+import Header from '../../components/organisms/Header';
+import Footer from '../../components/organisms/footer';
 
 const AuthorsPage = () => {
   return (
@@ -12,7 +12,7 @@ const AuthorsPage = () => {
       <Authors />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default AuthorsPage
+export default AuthorsPage;

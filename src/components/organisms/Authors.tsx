@@ -1,15 +1,15 @@
-'use client'
-import React, { useState } from 'react'
-import { TailSpin } from 'react-loader-spinner'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import AuthorCard from '../molecules/AuthorCard'
-import useGetAuthors from '@/lib/hooks/useGetAuthors'
+'use client';
+import React, { useState } from 'react';
+import { TailSpin } from 'react-loader-spinner';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import AuthorCard from '../molecules/AuthorCard';
+import useGetAuthors from '@/lib/hooks/useGetAuthors';
 
 const Authors = () => {
-  const [page, setPage] = useState(1)
-  const [limit] = useState(7)
+  const [page, setPage] = useState(1);
+  const [limit] = useState(7);
 
-  const { data, isLoading, error } = useGetAuthors(page, limit)
+  const { data, isLoading, error } = useGetAuthors(page, limit);
 
   if (isLoading)
     return (
@@ -25,9 +25,9 @@ const Authors = () => {
           visible={true}
         />
       </div>
-    )
+    );
 
-  if (error) return <p>Error: {error.message}</p>
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="w-full flex justify-center mt-20 sm:mt-20 px-4 sm:px-0">
@@ -60,7 +60,7 @@ const Authors = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Authors
+export default Authors;

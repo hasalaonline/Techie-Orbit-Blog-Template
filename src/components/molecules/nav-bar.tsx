@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -7,27 +7,27 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from '../atoms/navigation-menu'
-import { useQuery } from '@tanstack/react-query'
+} from '../atoms/navigation-menu';
+import { useQuery } from '@tanstack/react-query';
 
 const NavBar = () => {
   const { data } = useQuery({
     queryKey: ['tags'],
     queryFn: async () => {
-      const response = await fetch(`/api/tags`)
+      const response = await fetch(`/api/tags`);
       if (!response.ok) {
-        throw new Error('Failed to fetch posts')
+        throw new Error('Failed to fetch posts');
       }
-      return response.json()
+      return response.json();
     },
-  })
+  });
   const tags: { title: string; href: string; description: string }[] = [
     ...(data?.map((tag: any) => ({
       title: tag.name,
       href: `/tags/${tag.slug}`,
       description: tag.name,
     })) ?? []),
-  ]
+  ];
 
   return (
     <NavigationMenu>
@@ -74,7 +74,7 @@ const NavBar = () => {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

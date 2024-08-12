@@ -1,17 +1,17 @@
-'use client'
-import React, { useState } from 'react'
-import NavBar from '../molecules/nav-bar'
-import Image from 'next/image'
-import Link from 'next/link'
-import Search from '../molecules/search'
-import { Menu, X } from 'lucide-react'
+'use client';
+import React, { useState } from 'react';
+import NavBar from '../molecules/nav-bar';
+import Image from 'next/image';
+import Link from 'next/link';
+import Search from '../molecules/search';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <header className="w-full max-w-[1200px] flex justify-between items-center px-4 mx-auto border-b border-gray-300">
@@ -67,7 +67,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

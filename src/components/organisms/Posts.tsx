@@ -1,18 +1,18 @@
-'use client'
-import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import PostCard from '../molecules/post-card'
-import { TailSpin } from 'react-loader-spinner'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { Post } from '@/lib/types/post'
-import usePosts from '@/lib/hooks/useGetPosts'
+'use client';
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import PostCard from '../molecules/post-card';
+import { TailSpin } from 'react-loader-spinner';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Post } from '@/lib/types/post';
+import usePosts from '@/lib/hooks/useGetPosts';
 
 interface Props {
-  filter?: string
+  filter?: string;
 }
 
 const Posts = ({ filter = '' }: Props) => {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
 
   const { data, isLoading, error } = usePosts(page, filter);
 
@@ -30,9 +30,9 @@ const Posts = ({ filter = '' }: Props) => {
           visible={true}
         />
       </div>
-    )
+    );
 
-  if (error) return <p>Error: {error.message}</p>
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="w-full flex justify-center mt-20 sm:mt-20 px-4">
@@ -65,7 +65,7 @@ const Posts = ({ filter = '' }: Props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Posts
+export default Posts;

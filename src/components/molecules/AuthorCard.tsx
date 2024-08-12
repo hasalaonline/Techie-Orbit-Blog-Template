@@ -1,14 +1,14 @@
-import React from 'react'
-import { Card, CardDescription, CardHeader, CardTitle } from '../atoms/card'
-import Link from 'next/link'
-import Image from 'next/image'
-import { FaXTwitter } from 'react-icons/fa6'
-import { AiOutlineGlobal } from 'react-icons/ai'
-import { FaFacebook } from 'react-icons/fa'
-import { Author } from '@/lib/types/author'
+import React from 'react';
+import { Card, CardDescription, CardHeader, CardTitle } from '../atoms/card';
+import Link from 'next/link';
+import Image from 'next/image';
+import { FaXTwitter } from 'react-icons/fa6';
+import { AiOutlineGlobal } from 'react-icons/ai';
+import { FaFacebook } from 'react-icons/fa';
+import { Author } from '@/lib/types/author';
 
 interface Props {
-  author: Author
+  author: Author;
 }
 
 const AuthorCard = ({ author }: Props) => {
@@ -49,7 +49,7 @@ const AuthorCard = ({ author }: Props) => {
         )}
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default AuthorCard
+export default AuthorCard;

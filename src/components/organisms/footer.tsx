@@ -1,6 +1,6 @@
-import { HomeIcon, MailIcon, PhoneIcon } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
+import { HomeIcon, MailIcon, PhoneIcon } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -82,7 +82,7 @@ const Footer = () => {
         </p>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

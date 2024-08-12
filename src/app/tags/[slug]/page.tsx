@@ -1,25 +1,25 @@
-'use client'
-import Posts from '@/components/organisms/Posts'
-import Header from '../../../components/organisms/Header'
-import Footer from '../../../components/organisms/footer'
-import { useQuery } from '@tanstack/react-query'
-import { TailSpin } from 'react-loader-spinner'
+'use client';
+import Posts from '@/components/organisms/Posts';
+import Header from '../../../components/organisms/Header';
+import Footer from '../../../components/organisms/footer';
+import { useQuery } from '@tanstack/react-query';
+import { TailSpin } from 'react-loader-spinner';
 
 const TagDetails = ({ params }: { params: any }) => {
-  const { slug } = params
+  const { slug } = params;
 
-  const filter = `&filter=tag:${slug}`
+  const filter = `&filter=tag:${slug}`;
 
   const { data, isLoading, error } = useQuery({
     queryKey: [slug],
     queryFn: async () => {
-      const response = await fetch(`/api/tag?slug=${slug}`)
+      const response = await fetch(`/api/tag?slug=${slug}`);
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error('Network response was not ok');
       }
-      return response.json()
+      return response.json();
     },
-  })
+  });
 
   if (isLoading)
     return (
@@ -35,11 +35,11 @@ const TagDetails = ({ params }: { params: any }) => {
           visible={true}
         />
       </div>
-    )
+    );
 
-  if (error) return <p>Error: {error.message}</p>
+  if (error) return <p>Error: {error.message}</p>;
 
-  if (!data) return <p>No data found</p>
+  if (!data) return <p>No data found</p>;
 
   return (
     <>
@@ -51,7 +51,7 @@ const TagDetails = ({ params }: { params: any }) => {
       <Posts filter={filter} />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default TagDetails
+export default TagDetails;

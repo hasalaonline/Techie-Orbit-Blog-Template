@@ -1,16 +1,16 @@
-'use client'
-import { TailSpin } from 'react-loader-spinner'
-import Footer from './footer'
-import Header from './Header'
-import DOMPurify from 'dompurify'
-import useGetInfoPage from '@/lib/hooks/useGetInfoPage'
+'use client';
+import { TailSpin } from 'react-loader-spinner';
+import Footer from './footer';
+import Header from './Header';
+import DOMPurify from 'dompurify';
+import useGetInfoPage from '@/lib/hooks/useGetInfoPage';
 
 interface Props {
-  slug: string
+  slug: string;
 }
 
 const InfoPage = ({ slug }: Props) => {
-  const { data, isLoading, error } = useGetInfoPage(slug)
+  const { data, isLoading, error } = useGetInfoPage(slug);
 
   if (isLoading)
     return (
@@ -26,13 +26,13 @@ const InfoPage = ({ slug }: Props) => {
           visible={true}
         />
       </div>
-    )
+    );
 
-  if (error) return <p>Error: {error.message}</p>
+  if (error) return <p>Error: {error.message}</p>;
 
-  if (!data) return <p>No data found</p>
+  if (!data) return <p>No data found</p>;
 
-  const sanitizedHtml = DOMPurify.sanitize(data.html)
+  const sanitizedHtml = DOMPurify.sanitize(data.html);
 
   return (
     <>
@@ -47,7 +47,7 @@ const InfoPage = ({ slug }: Props) => {
       </div>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default InfoPage
+export default InfoPage;

@@ -1,40 +1,40 @@
-'use client'
-import React, { useState } from 'react'
-import { Input } from '../atoms/input'
-import { useQuery } from '@tanstack/react-query'
-import { PostOrPage } from '@tryghost/content-api'
-import Link from 'next/link'
-import Image from 'next/image'
+'use client';
+import React, { useState } from 'react';
+import { Input } from '../atoms/input';
+import { useQuery } from '@tanstack/react-query';
+import { PostOrPage } from '@tryghost/content-api';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Search = () => {
-  const [searchResults, setSearchResults] = useState<PostOrPage[]>([])
+  const [searchResults, setSearchResults] = useState<PostOrPage[]>([]);
 
   const { data: posts } = useQuery({
     queryKey: ['posts'],
     queryFn: async () => {
-      const response = await fetch(`/api/search`)
+      const response = await fetch(`/api/search`);
       if (!response.ok) {
-        throw new Error('Failed to fetch posts')
+        throw new Error('Failed to fetch posts');
       }
-      return response.json()
+      return response.json();
     },
-  })
+  });
 
   const handleSearch = (e: { target: { value: string } }) => {
-    const searchTerm = e.target.value.toLowerCase()
+    const searchTerm = e.target.value.toLowerCase();
 
     const filteredPosts =
       posts?.filter(
         (post: { title: string }) =>
           post?.title?.toLowerCase().includes(searchTerm) ?? false,
-      ) || []
+      ) || [];
 
     if (searchTerm.length === 0) {
-      return setSearchResults([])
+      return setSearchResults([]);
     }
 
-    setSearchResults(filteredPosts)
-  }
+    setSearchResults(filteredPosts);
+  };
 
   return (
     <div className="relative">
@@ -63,7 +63,7 @@ const Search = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;

@@ -1,7 +1,7 @@
-import InfoPage from '@/components/organisms/InfoPage'
+import InfoPage from '@/components/organisms/InfoPage';
 
 const About = () => {
-  return <InfoPage slug="about" />
-}
+  return <InfoPage slug="about" />;
+};
 
-export default About
+export default About;

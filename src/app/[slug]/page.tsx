@@ -1,10 +1,10 @@
-'use client'
-import Header from '../../components/organisms/Header'
-import Footer from '../../components/organisms/footer'
-import PostPage from '../../components/organisms/SinglePost'
+'use client';
+import Header from '../../components/organisms/Header';
+import Footer from '../../components/organisms/footer';
+import PostPage from '../../components/organisms/SinglePost';
 
 const PostDetail = ({ params }: { params: any }) => {
-  const { slug } = params
+  const { slug } = params;
 
   return (
     <>
@@ -12,7 +12,7 @@ const PostDetail = ({ params }: { params: any }) => {
       <PostPage slug={slug} />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default PostDetail
+export default PostDetail;

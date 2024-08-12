@@ -1,34 +1,34 @@
-'use client'
-import Posts from '@/components/organisms/Posts'
-import Header from '../../../components/organisms/Header'
-import Footer from '../../../components/organisms/footer'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { TailSpin } from 'react-loader-spinner'
-import { AvatarFallback, Avatar, AvatarImage } from '@/components/atoms/avatar'
-import Link from 'next/link'
-import { FaXTwitter } from 'react-icons/fa6'
-import { AiOutlineGlobal } from 'react-icons/ai'
-import { FaFacebook } from 'react-icons/fa'
+'use client';
+import Posts from '@/components/organisms/Posts';
+import Header from '../../../components/organisms/Header';
+import Footer from '../../../components/organisms/footer';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { TailSpin } from 'react-loader-spinner';
+import { AvatarFallback, Avatar, AvatarImage } from '@/components/atoms/avatar';
+import Link from 'next/link';
+import { FaXTwitter } from 'react-icons/fa6';
+import { AiOutlineGlobal } from 'react-icons/ai';
+import { FaFacebook } from 'react-icons/fa';
 
 const AuthorDetails = ({ params }: { params: any }) => {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
-  queryClient.removeQueries({ queryKey: ['posts'] })
+  queryClient.removeQueries({ queryKey: ['posts'] });
 
-  const { slug } = params
+  const { slug } = params;
 
-  const filter = `&filter=author:${slug}`
+  const filter = `&filter=author:${slug}`;
 
   const { data, isLoading, error } = useQuery({
     queryKey: [slug, filter],
     queryFn: async () => {
-      const response = await fetch(`/api/author?slug=${slug}`)
+      const response = await fetch(`/api/author?slug=${slug}`);
       if (!response.ok) {
-        throw new Error('Network response was not ok')
+        throw new Error('Network response was not ok');
       }
-      return response.json()
+      return response.json();
     },
-  })
+  });
 
   if (isLoading)
     return (
@@ -44,11 +44,11 @@ const AuthorDetails = ({ params }: { params: any }) => {
           visible={true}
         />
       </div>
-    )
+    );
 
-  if (error) return <p>Error: {error.message}</p>
+  if (error) return <p>Error: {error.message}</p>;
 
-  if (!data) return <p>No data found</p>
+  if (!data) return <p>No data found</p>;
 
   return (
     <>
@@ -91,7 +91,7 @@ const AuthorDetails = ({ params }: { params: any }) => {
       <Posts filter={filter} />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default AuthorDetails
+export default AuthorDetails;

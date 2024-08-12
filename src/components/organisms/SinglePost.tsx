@@ -1,12 +1,12 @@
-import { Post } from '../../lib/types/post'
-import React from 'react'
-import DOMPurify from 'dompurify'
-import Image from 'next/image'
-import { TailSpin } from 'react-loader-spinner'
-import useGetPost from '@/lib/hooks/useGetPost'
+import { Post } from '../../lib/types/post';
+import React from 'react';
+import DOMPurify from 'dompurify';
+import Image from 'next/image';
+import { TailSpin } from 'react-loader-spinner';
+import useGetPost from '@/lib/hooks/useGetPost';
 
 interface Props {
-  slug: string
+  slug: string;
 }
 
 const PostPage: React.FC<Props> = ({ slug }) => {
@@ -26,13 +26,13 @@ const PostPage: React.FC<Props> = ({ slug }) => {
           visible={true}
         />
       </div>
-    )
+    );
 
-  if (error) return <p>Error: {error.message}</p>
+  if (error) return <p>Error: {error.message}</p>;
 
-  if (!data) return <p>No data found</p>
-  
-  const sanitizedHtml = DOMPurify.sanitize(data.html ?? '')
+  if (!data) return <p>No data found</p>;
+
+  const sanitizedHtml = DOMPurify.sanitize(data.html ?? '');
 
   return (
     <div className="post-body gh-content w-full flex justify-center mt-4 sm:mt-20 px-4">
@@ -59,7 +59,7 @@ const PostPage: React.FC<Props> = ({ slug }) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PostPage
+export default PostPage;
