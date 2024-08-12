@@ -1,6 +1,6 @@
 {
   "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
   "rules": {
-    // your custom rules
+    "prettier/prettier": ["error", { "semi": true }]
   }
 }
