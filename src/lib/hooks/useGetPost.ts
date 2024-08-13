@@ -4,7 +4,7 @@ import { Post } from '../types/post';
 interface PostPageData {
   html: string;
   title: string;
-  authors: { name: string }[];
+  authors: { name: string; profile_image: string }[];
   published_at: string;
   feature_image: string;
 }
