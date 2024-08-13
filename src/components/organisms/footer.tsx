@@ -24,9 +24,9 @@ const Footer = () => {
 
         <div className="grid grid-cols-2 gap-8">
           <div>
-            <h1 className="text-lg font-semibold sm:text-left text-center">
+            <h2 className="text-lg font-semibold sm:text-left text-center">
               Quick Links
-            </h1>
+            </h2>
             <ul className="mt-4 space-y-4 text-center md:text-left">
               <li>
                 <Link href="/">Home</Link>
@@ -44,9 +44,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h1 className="text-lg font-semibold sm:text-left text-center">
+            <h2 className="text-lg font-semibold sm:text-left text-center">
               Legal
-            </h1>
+            </h2>
             <ul className="mt-4 space-y-4 text-center md:text-left">
               <li>
                 <Link href="/privacy-policy"> Privacy Policy</Link>
@@ -59,7 +59,7 @@ const Footer = () => {
         </div>
 
         <div className="md:col-span-1 text-center md:text-left">
-          <h1 className="text-lg font-semibold">Contact Us</h1>
+          <h2 className="text-lg font-semibold">Contact Us</h2>
           <ul className="mt-4 space-y-4">
             <li className="flex justify-center md:justify-start gap-2">
               <PhoneIcon /> <span>123456789</span>

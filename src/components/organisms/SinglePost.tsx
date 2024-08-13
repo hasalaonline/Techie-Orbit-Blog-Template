@@ -64,12 +64,12 @@ const PostPage: React.FC<Props> = ({ slug }) => {
           {data.authors?.map((author, index) => (
             <div key={index} className="flex items-center space-x-4">
               <Image
-                src={author?.profile_image} // Assuming author.profile_image contains the image URL
+                src={author?.profile_image}
                 alt={author.name}
-                width={48} // Adjust width as needed
-                height={48} // Adjust height as needed
-                className="rounded-full" // Image styles
-                layout="intrinsic" // Ensures the image maintains its aspect ratio
+                width={48}
+                height={48}
+                className="rounded-full"
+                layout="intrinsic"
               />
               <p className="text-sm font-medium">{author.name}</p>
             </div>
