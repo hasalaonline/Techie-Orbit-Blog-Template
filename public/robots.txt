@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://techie-orbit-blog-template.vercel.app/
+
+# Sitemaps
+Sitemap: https://techie-orbit-blog-template.vercel.app/sitemap.xml
