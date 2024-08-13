@@ -27,6 +27,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/api/posts/route.ts"
-  ],
+, "next-sitemap.config.js"  ],
   "exclude": ["node_modules"]
 }
