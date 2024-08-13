@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
                   <Image
                     src={post.feature_image ?? ''}
                     alt={post.title}
-                    width={300}
+                    width={800}
                     height={600}
                     priority={index === 0} // Load first image with priority
                     className="w-full h-auto rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none"
