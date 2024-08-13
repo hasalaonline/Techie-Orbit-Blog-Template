@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
       </h2>
       <Carousel className="w-full max-w-2xl">
         <CarouselContent>
-          {data?.posts?.map((post: Post) => (
+          {data?.posts?.map((post: Post, index: number) => (
             <CarouselItem key={post.id}>
               <Card className="sm:flex items-center w-full max-w-4xl rounded-3xl">
                 <div className="sm:w-1/2">
@@ -68,6 +68,7 @@ const Hero: React.FC = () => {
                     alt={post.title}
                     width={800}
                     height={600}
+                    priority={index === 0} // Load first image with priority
                     className="w-full h-auto rounded-t-3xl sm:rounded-l-3xl sm:rounded-tr-none"
                   />
                 </div>
