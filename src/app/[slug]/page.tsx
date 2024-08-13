@@ -1,7 +1,8 @@
 'use client';
-import Header from '../../components/organisms/Header';
-import Footer from '../../components/organisms/footer';
-import PostPage from '../../components/organisms/SinglePost';
+
+import Footer from '@/components/organisms/footer';
+import Header from '@/components/organisms/Header';
+import PostPage from '@/components/organisms/SinglePost';
 
 const PostDetail = ({ params }: { params: any }) => {
   const { slug } = params;
