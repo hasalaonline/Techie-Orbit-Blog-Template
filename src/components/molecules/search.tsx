@@ -47,7 +47,7 @@ const Search = () => {
       {searchResults.length > 0 && (
         <div className="absolute mt-1 w-full bg-white shadow-lg rounded-md overflow-hidden z-10">
           {searchResults.map((post) => (
-            <Link href={`/${post.slug}`} key={post.id}>
+            <Link href={`/posts/${post.slug}`} key={post.id}>
               <div className="px-4 py-2 border-b border-gray-200 flex gap-4">
                 <Image
                   src={post.feature_image ?? ''}
