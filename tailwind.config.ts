@@ -19,6 +19,14 @@ const config = {
     },
     extend: {
       colors: {
+        'apple-black': '#1d1d1f',
+        'apple-gray-dark': '#333333',
+        'apple-gray-medium': '#888888',
+        'apple-gray-light': '#f5f5f7',
+        'apple-gray-ultralight': '#fafafa',
+        'apple-white': '#ffffff',
+        'apple-blue-link': '#007aff',
+        'apple-blue-hover': '#0056b3',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -52,6 +60,9 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+      },
+      fontFamily: {
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
       },
       borderRadius: {
         lg: 'var(--radius)',

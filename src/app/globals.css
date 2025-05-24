@@ -7,74 +7,103 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Apple Design System Colors */
+    --background-rgb: 255 255 255; /* apple-white */
+    --foreground-rgb: 29 29 31;    /* apple-black */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --apple-gray-dark-rgb: 51 51 53;
+    --apple-gray-medium-rgb: 136 136 136;
+    --apple-gray-light-rgb: 245 245 247;
+    --apple-gray-ultralight-rgb: 250 250 250;
+    --apple-blue-link-rgb: 0 122 255;
+    --apple-blue-hover-rgb: 0 86 179;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Mapping to existing theme variables (primarily for shadcn/ui components if used) */
+    /* Forcing light theme for now, dark mode variables can be adjusted later if needed */
+    --background: var(--background-rgb); /* Direct use of RGB for background */
+    --foreground: var(--foreground-rgb); /* Direct use of RGB for foreground */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --card: var(--background-rgb);
+    --card-foreground: var(--foreground-rgb);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --popover: var(--background-rgb);
+    --popover-foreground: var(--foreground-rgb);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --primary: var(--foreground-rgb); /* Primary can be text color */
+    --primary-foreground: var(--background-rgb); /* Text on primary elements */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--apple-gray-light-rgb); /* Secondary background */
+    --secondary-foreground: var(--foreground-rgb); /* Text on secondary elements */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --muted: var(--apple-gray-medium-rgb); /* Muted text or elements */
+    --muted-foreground: var(--apple-gray-dark-rgb); /* Text on muted elements */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --accent: var(--apple-blue-link-rgb); /* Accent color */
+    --accent-foreground: var(--background-rgb); /* Text on accent elements */
+
+    --destructive: 220 38 38; /* Example destructive color, can be refined */
+    --destructive-foreground: 255 255 255;
+
+    --border: var(--apple-gray-light-rgb); /* Borders */
+    --input: var(--apple-gray-light-rgb); /* Input backgrounds */
+    --ring: var(--apple-blue-link-rgb);   /* Focus rings */
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode variables will need to be defined based on Apple's dark mode guidelines */
+    /* For now, keeping them as placeholders or inverting light theme */
+    --background-rgb: 29 29 31;    /* apple-black for dark background */
+    --foreground-rgb: 245 245 247; /* apple-gray-light for dark text */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --apple-gray-dark-rgb: 136 136 136;
+    --apple-gray-medium-rgb: 88 88 88;
+    --apple-gray-light-rgb: 51 51 53;
+    --apple-gray-ultralight-rgb: 40 40 40;
+    --apple-blue-link-rgb: 0 122 255; /* Blue might stay the same or get lighter */
+    --apple-blue-hover-rgb: 0 86 179;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --background: var(--background-rgb);
+    --foreground: var(--foreground-rgb);
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --card: var(--background-rgb);
+    --card-foreground: var(--foreground-rgb);
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --popover: var(--background-rgb);
+    --popover-foreground: var(--foreground-rgb);
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --primary: var(--foreground-rgb);
+    --primary-foreground: var(--background-rgb);
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --secondary: var(--apple-gray-light-rgb);
+    --secondary-foreground: var(--foreground-rgb);
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --muted: var(--apple-gray-medium-rgb);
+    --muted-foreground: var(--apple-gray-dark-rgb);
+
+    --accent: var(--apple-blue-link-rgb);
+    --accent-foreground: var(--background-rgb);
+
+    --destructive: 200 30 30;
+    --destructive-foreground: 255 255 255;
+
+    --border: var(--apple-gray-light-rgb);
+    --input: var(--apple-gray-light-rgb);
+    --ring: var(--apple-blue-link-rgb);
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border; /* Uses CSS var --border which is now apple-gray-light */
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans; /* Uses CSS vars --background, --foreground and font-sans from tailwind.config */
+  }
+  a {
+    @apply text-apple-blue-link hover:text-apple-blue-hover;
   }
 }
 
@@ -134,4 +163,12 @@ ul {
   margin-top: 1.25rem;
   margin-top: calc(1.25rem * (1 - var(--tw-space-y-reverse)));
   padding-left: 1.625rem;
+}
+
+.post-body blockquote {
+  @apply border-l-4 border-apple-gray-medium pl-4 italic my-6 text-apple-gray-dark;
+}
+
+.post-body blockquote p {
+  @apply my-0; /* Reset paragraph margin inside blockquote if needed */
 }

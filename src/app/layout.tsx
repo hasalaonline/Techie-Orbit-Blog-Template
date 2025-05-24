@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/util/Providers';
 import { Analytics } from '@vercel/analytics/react';
+import AppleFooter from '@/components/organisms/AppleFooter'; // Import AppleFooter
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,10 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`w-full max-w-[1200px] mx-auto ${inter.className}`}>
+      <body className={`w-full max-w-[1200px] mx-auto ${inter.className} flex flex-col min-h-screen`}>
         <Providers>
-          {children}
+          <div className="flex-grow"> {/* Wrapper to make footer stick to bottom */}
+            <main>{children}</main>
+          </div>
           <Analytics />
+          <AppleFooter />
         </Providers>
       </body>
     </html>
